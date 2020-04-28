@@ -11,12 +11,25 @@ AC_CONFIG_SRCDIR([src/gnupgshell.vers])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_LIBOBJ_DIR([compat])
-AC_CANONICAL_HOST
+
+#AC_CANONICAL_HOST
+#AC_CANONICAL_BUILD
+AC_CANONICAL_TARGET
+AC_CANONICAL_SYSTEM
 
 # Automake
 AM_INIT_AUTOMAKE([serial-tests dist-bzip2])
 AM_MAINTAINER_MODE
 AM_SILENT_RULES
+
+
+# define configure options
+WX_CONFIG_OPTIONS
+WX_STANDARD_OPTIONS([debug,unicode,shared,toolkit,wxshared])
+
+# we want to always have DEBUG==WX_DEBUG and UNICODE==WX_UNICODE
+WX_DEBUG=$DEBUG
+WX_UNICODE=$UNICODE
 
 #############################################################################
 # Checks for programs.
@@ -57,25 +70,39 @@ LT_LANG([Windows Resource])
 AC_CHECK_HEADER([limits.h])
 AC_CHECK_HEADER([unistd.h])
 
-# wxprec
-AM_OPTIONS_WXCONFIG
-reqwx=2.4.0
-AM_PATH_WXCONFIG($reqwx, wxWin=1)
-if test "$wxWin" != 1; then
-	AC_MSG_ERROR([
-		wxWidgets must be installed on your system.
 
-		Please check that wx-config is in path, the directory
-		where wxWidgets libraries are installed (returned by
-		'wx-config --libs' or 'wx-config --static --libs' command)
-		is in LD_LIBRARY_PATH or equivalent variable and
-		wxWidgets version is $reqwx or above.
-		])
+
+WX_CONVERT_STANDARD_OPTIONS_TO_WXCONFIG_FLAGS
+WX_CONFIG_CHECK([2.8.0], [wxWin=1],,[all],[$WXCONFIG_FLAGS])
+if test "$wxWin" != 1; then
+   AC_MSG_ERROR([
+           wxWidgets must be installed on your system
+           but wx-config script couldn't be found.
+
+           Please check that wx-config is in path, the directory
+           where wxWidgets libraries are installed (returned by
+           'wx-config --libs' command) is in LD_LIBRARY_PATH or
+           equivalent variable and wxWidgets version is 2.6.0 or above.
+   ])
 fi
+
+
+WXRC_CHECK([HAVE_WXRC=1], [HAVE_WXRC=0])
+if test "x$HAVE_WXRC" != x1; then
+    AC_MSG_ERROR([
+           The wxrc program was not installed or not found.
+
+           Please check the wxWidgets installation.
+    ])
+fi
+
 CPPFLAGS="$CPPFLAGS $WX_CPPFLAGS"
 CXXFLAGS="$CXXFLAGS $WX_CXXFLAGS_ONLY"
 CFLAGS="$CFLAGS $WX_CFLAGS_ONLY"
-LIBS="$LIBS $WX_LIBS"
+
+LDFLAGS="$LDFLAGS $WX_LIBS"
+
+WX_DETECT_STANDARD_OPTION_VALUES
 
 
 #############################################################################
@@ -107,3 +134,6 @@ AC_CONFIG_FILES([
  src/Makefile
 ])
 AC_OUTPUT
+
+# optional: just to show a message to the user
+WX_STANDARD_OPTIONS_SUMMARY_MSG

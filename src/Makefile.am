@@ -1,6 +1,7 @@
 bin_PROGRAMS = gnupgshell
 
-gnupgshell_LDADD = @LIBS@
+gnupgshell_LDADD = @LIBS@ \
+	../wxTranslationHelper/libwxTranslationHelper.la
 gnupgshell_CXXFLAGS = @CXXFLAGS@
 gnupgshell_SOURCES = \
 	app_resources.cpp               \
