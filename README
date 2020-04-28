@@ -1,0 +1,50 @@
+*****************************************************************
+Welcome to GnuPG Shell, version 1.0!
+*****************************************************************
+
+GnuPG Shell is a graphical frontend for the GNU Privacy Guard 
+(GnuPG, http://www.gnupg.org). GnuPG Shell can be used to 
+encrypt, decrypt, and sign files, to verify signatures and 
+to manage the private and public keys.
+
+Copyright (C) 2007 Will Spencer
+
+GnuPG Shell is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+Installation under a GNU operating system (such as GNU/Linux)
+=============================================================
+
+You need the GNU development tools plus the GTK+ library, version
+1.3 or higher and wxGTK, version 2.8.4 or higher, installed on your 
+system. Unpack the tarball, `cd' into the new directory, compile, 
+and install GnuPG Shell:
+
+    tar xvzf gnupgshell-1.0.0.tar.gz
+    cd gnupgshell-1.0.0/build
+    make
+    su -c "make install"
+
+In order to do anything useful with GnuPG Shell you also need the
+GNU Privacy Guard (GnuPG) installed - see http://www.gnupg.org.
+
+Please report any problems to will.spencer@tech-faq.com.
+
+
+Installation under MS-Windows
+=============================
+You need Unicode build wxWidgets framework 2.8.4 or higher and
+registered WXWIN system variable witch path to wxWidgets directory
+
+You need to compile GnuPG Shell sources. You can do it with
+Microsoft Visual Studio 2005 or higher. In ./build directory
+exists corresponding Microsoft Visual Studio 
+solution - wxGnuPGShell.sln. Open it in Visual Studio and
+build it. All binaries would be in ./bin directory.
+
+In order to do anything useful with GnuPG Shell you also need the
+GNU Privacy Guard (GnuPG) - see http://www.gnupg.org.
+
+Have fun!

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="wxGnuPGShell" />
+		<Option platforms="Unix;" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option extended_obj_names="1" />
+		<Build>
+			<Target title="Debug">
+				<Option platforms="Unix;" />
+				<Option output="../bin/wxGnuPGShell" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="`wx-config --static=yes --unicode=yes debug=no --cxxflags --prefix=/usr/local`" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option platforms="Unix;" />
+				<Option output="../bin/wxGnuPGShell" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="`wx-config --static=yes --unicode=yes debug=no --cxxflags --prefix=/usr/local`" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="`wx-config --static=yes --unicode=yes --debug=no --libs`" />
+					<Add library="../externs/build/propgrid/libpropgrid.a" />
+					<Add library="../externs/build/wxTranslationHelper/libwxTranslationHelper.a" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="`wx-config --static=yes --unicode=yes debug=no --cxxflags --prefix=/usr/local`" />
+			<Add directory="../externs/include" />
+			<Add directory="../src" />
+		</Compiler>
+		<Linker>
+			<Add option="`wx-config --static=yes --unicode=yes --debug=no --libs`" />
+			<Add library="libpropgrid.a" />
+			<Add library="libwxTranslationHelper.a" />
+			<Add directory="../externs/lib" />
+			<Add directory="../externs/build/propgrid" />
+			<Add directory="../externs/build/wxTranslationHelper" />
+		</Linker>
+		<Unit filename="../src/app_resources.cpp" />
+		<Unit filename="../src/app_resources.h" />
+		<Unit filename="../src/wxGnuPGKey.cpp" />
+		<Unit filename="../src/wxGnuPGKey.h" />
+		<Unit filename="../src/wxGnuPGKeyListCtrl.cpp" />
+		<Unit filename="../src/wxGnuPGKeyListCtrl.h" />
+		<Unit filename="../src/wxGnuPGKeyPair.cpp" />
+		<Unit filename="../src/wxGnuPGKeyPair.h" />
+		<Unit filename="../src/wxGnuPGShellAboutDialog.cpp" />
+		<Unit filename="../src/wxGnuPGShellAboutDialog.h" />
+		<Unit filename="../src/wxGnuPGShellImportKey.cpp" />
+		<Unit filename="../src/wxGnuPGShellImportKey.h" />
+		<Unit filename="../src/wxGnuPGShellRevokeKey.cpp" />
+		<Unit filename="../src/wxGnuPGShellRevokeKey.h" />
+		<Unit filename="../src/wxGnuPGShellSelectRecipient.cpp" />
+		<Unit filename="../src/wxGnuPGShellSelectRecipient.h" />
+		<Unit filename="../src/wxGnuPGWrapper.cpp" />
+		<Unit filename="../src/wxGnuPGWrapper.h" />
+		<Unit filename="../src/wxgnupgshelladvkeysettings.cpp" />
+		<Unit filename="../src/wxgnupgshelladvkeysettings.h" />
+		<Unit filename="../src/wxgnupgshellapp.cpp" />
+		<Unit filename="../src/wxgnupgshellapp.h" />
+		<Unit filename="../src/wxgnupgshellbackup.cpp" />
+		<Unit filename="../src/wxgnupgshellbackup.h" />
+		<Unit filename="../src/wxgnupgshelleditkey.cpp" />
+		<Unit filename="../src/wxgnupgshelleditkey.h" />
+		<Unit filename="../src/wxgnupgshellexpiration.cpp" />
+		<Unit filename="../src/wxgnupgshellexpiration.h" />
+		<Unit filename="../src/wxgnupgshellfilecheck.cpp" />
+		<Unit filename="../src/wxgnupgshellfilecheck.h" />
+		<Unit filename="../src/wxgnupgshellfilemanager.cpp" />
+		<Unit filename="../src/wxgnupgshellfilemanager.h" />
+		<Unit filename="../src/wxgnupgshellkeygenwizard.cpp" />
+		<Unit filename="../src/wxgnupgshellkeygenwizard.h" />
+		<Unit filename="../src/wxgnupgshellkeyringeditor.cpp" />
+		<Unit filename="../src/wxgnupgshellkeyringeditor.h" />
+		<Unit filename="../src/wxgnupgshellpasskey.cpp" />
+		<Unit filename="../src/wxgnupgshellpasskey.h" />
+		<Unit filename="../src/wxgnupgshellsettings.cpp" />
+		<Unit filename="../src/wxgnupgshellsettings.h" />
+		<Unit filename="../src/wxgnupgshelltrust.cpp" />
+		<Unit filename="../src/wxgnupgshelltrust.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

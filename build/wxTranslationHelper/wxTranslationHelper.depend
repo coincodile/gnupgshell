@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1191479002 source:/home/cod/Projects/wxGnuPGShell/externs/src/wxTranslationHelper/wxTranslationHelper.cpp
+	<wx/wxTranslationHelper/wxTranslationHelper.h>
+	<wx/dir.h>
+	<wx/config.h>
+	<wx/fileconf.h>
+	<wx/filename.h>
+
+1191479001 /home/cod/Projects/wxGnuPGShell/externs/include/wx/wxTranslationHelper/wxTranslationHelper.h
+	<wx/wx.h>
+	<wx/intl.h>
+
