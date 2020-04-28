@@ -490,14 +490,13 @@ void wxGnuPGShellApp::RecreateGUI(bool show)
 
 wxString wxGnuPGShellApp::GetKeyFingerprint(wxUint32 index)
 {
-//    GpgKeyList::Node * node = wxGetApp().GetKeyList().Item(index);
-//
-//    if ( node ) {
-//        wxGnuPGKeyPair * key = node->GetData();
-//        return key->m_key.Fingerprint;
-//    } else {
+	wxGnuPGKeyPair* key = wxGetApp().GetKeyList()[index];
+
+    if ( key ) {
+        return key->m_key.Fingerprint;
+    } else {
         return wxEmptyString;
-//    }
+    }
 }
 
 
@@ -506,9 +505,9 @@ bool wxGnuPGShellApp::DeleteKey(const wxString keyId, const int index)
 {
     TaskParams params;
     params[wxT("KeyId")] = keyId;
-//    // delete from keyring
-//    GpgKeyList::Node * node = GetKeyList().Item(index);
-//    GetKeyList().Erase(node);
+    // delete from keyring
+    wxGnuPGKeyPair* key = GetKeyList()[index];
+    GetKeyList().DeleteObject(key);
     return m_gnuPGWrapper->RunTask(TASK_DEL_PAIR, params);
 }
 
@@ -518,9 +517,9 @@ bool wxGnuPGShellApp::DeleteKeyPair(const wxString keyId, const wxString fingerp
     TaskParams params;
     params[wxT("KeyId")] = keyId;
     params[wxT("Fingerprint")] = fingerprint;
-//    // delete from keyring
-//    GpgKeyList::Node * node = GetKeyList().Item(index);
-//    GetKeyList().Erase(node);
+    // delete from keyring
+    wxGnuPGKeyPair* key = GetKeyList()[index];
+    GetKeyList().DeleteObject(key);
     return m_gnuPGWrapper->RunTask(TASK_DEL_PAIR, params);
 }
 

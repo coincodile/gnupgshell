@@ -418,7 +418,7 @@ void wxGnuPGShellKeyringEditor::CreateControls()
     m_isPublicKeyring = true;
     m_isSelectedAll = false;
     FillKeyListColumns();
-//    m_keyListCtrl->SetItemCount(static_cast<long>(wxGetApp().GetKeyList().GetCount()));
+    m_keyListCtrl->SetItemCount(static_cast<long>(wxGetApp().GetKeyList().GetCount()));
     // property grid
     FillProperties();
 
@@ -427,14 +427,14 @@ void wxGnuPGShellKeyringEditor::CreateControls()
 
 void wxGnuPGShellKeyringEditor::FillProperties()
 {
-//    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append( wxStringProperty(_("User Name"),wxT("UserName"),wxT("")) ));
-//    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append( wxStringProperty(_("Key ID"),wxT("KeyID"),wxT("")) ));
-//    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append( wxStringProperty(_("Fingerprint"),wxT("Fingerprint"),wxT("")) ));
-//    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append( wxStringProperty(_("Expires at"),wxT("ExpiresAt"),wxT("")) ));
-//    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append( wxStringProperty(_("Owner Trust"),wxT("OwnerTrust"),wxT("")) ));
-//    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append( wxStringProperty(_("Key Validity"),wxT("KeyValidity"),wxT("")) ));
-//    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append( wxStringProperty(_("Key Type"),wxT("KeyType"),wxT("")) ));
-//    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append( wxStringProperty(_("Created at"),wxT("CreatedAt"),wxT("")) ));
+    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append(new wxPGProperty(_("User Name"),wxT("UserName")) ));
+    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append(new wxStringProperty(_("Key ID"),wxT("KeyID")) ));
+    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append(new wxStringProperty(_("Fingerprint"),wxT("Fingerprint")) ));
+    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append(new wxStringProperty(_("Expires at"),wxT("ExpiresAt")) ));
+    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append(new wxStringProperty(_("Owner Trust"),wxT("OwnerTrust")) ));
+    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append(new wxStringProperty(_("Key Validity"),wxT("KeyValidity")) ));
+    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append(new wxStringProperty(_("Key Type"),wxT("KeyType")) ));
+    m_keyProperty->SetPropertyReadOnly(m_keyProperty->Append(new wxStringProperty(_("Created at"),wxT("CreatedAt")) ));
 }
 
 void wxGnuPGShellKeyringEditor::FillKeyListColumns()

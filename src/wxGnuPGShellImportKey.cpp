@@ -300,16 +300,14 @@ void wxGnuPGShellImportKey::OnIMPORTKEYFINDClick( wxCommandEvent& event )
     wxString key = m_keyIdText->GetValue() == wxEmptyString ? m_keyNameText->GetValue() : m_keyIdText->GetValue();
     GpgKeyList list;
     wxBusyInfo *info = new wxBusyInfo(_("Please wait, searching key..."), this);
-//    if ( wxGetApp().SearchKeysOnServer(m_importServer->GetString(m_importServer->GetSelection()), key, list) ) {
-//        for ( unsigned int i = 0; i < list.GetCount(); i++ ) {
-//            GpgKeyList::Node * node = list.Item(i);
-//            if ( node ) {
-//                wxGnuPGKeyPair * key = node->GetData();
-//                long index = m_resultKeyList->InsertItem(m_resultKeyList->GetItemCount(), key->m_key.Id);
-//                m_resultKeyList->SetItem(index, 1, key->m_key.Name);
-//            }
-//        }
-//    }
+    if ( wxGetApp().SearchKeysOnServer(m_importServer->GetString(m_importServer->GetSelection()), key, list) ) {
+        for ( unsigned int i = 0; i < list.GetCount(); i++ ) {
+            wxGnuPGKeyPair *key = list[i];
+			long index = m_resultKeyList->InsertItem(
+					m_resultKeyList->GetItemCount(), key->m_key.Id);
+			m_resultKeyList->SetItem(index, 1, key->m_key.Name);
+        }
+    }
     wxDELETE(info);
 }
 
