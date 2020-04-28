@@ -28,8 +28,9 @@ WX_CONFIG_OPTIONS
 WX_STANDARD_OPTIONS([debug,unicode,shared,toolkit,wxshared])
 
 # we want to always have DEBUG==WX_DEBUG and UNICODE==WX_UNICODE
-WX_DEBUG=$DEBUG
-WX_UNICODE=$UNICODE
+WX_DEBUG=1
+WX_DEBUG_CONFIGURE=1
+WX_UNICODE=1
 
 #############################################################################
 # Checks for programs.

@@ -29,6 +29,11 @@
 
 #include "app_resources.h"
 
+
+char const *FONT_NAME_COURIER_NEW = "Courier New";
+char const *FONT_NAME_TAHOMA = "Tahoma";
+char const *FONT_NAME_WXNORMAL_FONT= "wxNORMAL_FONT";
+
 ////@begin XPM images
 ////@end XPM images
 

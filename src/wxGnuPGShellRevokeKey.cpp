@@ -28,6 +28,7 @@
 ////@end includes
 
 #include "wxGnuPGShellRevokeKey.h"
+#include "app_resources.h"
 
 ////@begin XPM images
 ////@end XPM images
@@ -128,7 +129,8 @@ void wxGnuPGShellRevokeKey::CreateControls() {
 			wxDefaultPosition, wxSize(-1, 40), wxALIGN_CENTRE);
 	itemStaticText3->SetBackgroundColour(wxColour(255, 255, 255));
 	itemStaticText3->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD,
+					false, FONT_NAME_TAHOMA));
 	itemBoxSizer2->Add(itemStaticText3, 0, wxGROW | wxALL, 0);
 
 	wxFlexGridSizer *itemFlexGridSizer4 = new wxFlexGridSizer(2, 2, 0, 0);
@@ -138,7 +140,8 @@ void wxGnuPGShellRevokeKey::CreateControls() {
 	wxStaticText *itemStaticText5 = new wxStaticText(itemDialog1, wxID_STATIC,
 			_("Key ID:"), wxDefaultPosition, wxDefaultSize, 0);
 	itemStaticText5->SetFont(
-			wxFont(8, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(8, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD,
+					false, FONT_NAME_TAHOMA));
 	itemFlexGridSizer4->Add(itemStaticText5, 0,
 			wxALIGN_RIGHT | wxALIGN_CENTER_VERTICAL | wxALL, 5);
 
@@ -150,7 +153,8 @@ void wxGnuPGShellRevokeKey::CreateControls() {
 	wxStaticText *itemStaticText7 = new wxStaticText(itemDialog1, wxID_STATIC,
 			_("User Name:"), wxDefaultPosition, wxDefaultSize, 0);
 	itemStaticText7->SetFont(
-			wxFont(8, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(8, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD,
+					false, FONT_NAME_TAHOMA));
 	itemFlexGridSizer4->Add(itemStaticText7, 0,
 			wxALIGN_RIGHT | wxALIGN_CENTER_VERTICAL | wxALL, 5);
 
@@ -162,7 +166,8 @@ void wxGnuPGShellRevokeKey::CreateControls() {
 	wxStaticText *itemStaticText9 = new wxStaticText(itemDialog1, wxID_STATIC,
 			_("Output:"), wxDefaultPosition, wxDefaultSize, 0);
 	itemStaticText9->SetFont(
-			wxFont(8, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(8, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD,
+					false, FONT_NAME_TAHOMA));
 	itemFlexGridSizer4->Add(itemStaticText9, 0,
 			wxALIGN_RIGHT | wxALIGN_CENTER_VERTICAL | wxALL, 5);
 
@@ -195,7 +200,8 @@ void wxGnuPGShellRevokeKey::CreateControls() {
 	wxStaticText *itemStaticText14 = new wxStaticText(itemDialog1, wxID_STATIC,
 			_("Your own reason:"), wxDefaultPosition, wxDefaultSize, 0);
 	itemStaticText14->SetFont(
-			wxFont(8, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(8, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD,
+					false, FONT_NAME_TAHOMA));
 	itemBoxSizer2->Add(itemStaticText14, 0, wxALIGN_LEFT | wxALL, 5);
 
 	m_ownReason = new wxTextCtrl(itemDialog1, ID_OWN_REASON_TEXT, _T(""),
@@ -208,7 +214,8 @@ void wxGnuPGShellRevokeKey::CreateControls() {
 	wxStaticText *itemStaticText17 = new wxStaticText(itemDialog1, wxID_STATIC,
 			_("Passphrase:"), wxDefaultPosition, wxDefaultSize, 0);
 	itemStaticText17->SetFont(
-			wxFont(8, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(8, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD,
+					false, FONT_NAME_TAHOMA));
 	itemBoxSizer16->Add(itemStaticText17, 0, wxALIGN_CENTER_VERTICAL | wxALL,
 			5);
 

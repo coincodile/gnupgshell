@@ -16,6 +16,11 @@
 #pragma interface ""
 #endif
 
+
+extern char const *FONT_NAME_COURIER_NEW;
+extern char const *FONT_NAME_TAHOMA;
+extern char const *FONT_NAME_WXNORMAL_FONT;
+
 /*!
  * Control identifiers
  */

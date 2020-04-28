@@ -25,9 +25,9 @@
 #endif
 
 ////@begin includes
-////@end includes
-
 #include "wxgnupgshellbackup.h"
+#include "app_resources.h"
+////@end includes
 
 ////@begin XPM images
 ////@end XPM images
@@ -127,25 +127,29 @@ void wxGnuPGShellBackup::CreateControls() {
 	wxStaticText *itemStaticText4 = new wxStaticText(itemDialog1, wxID_STATIC,
 			_("Key ID:"), wxDefaultPosition, wxDefaultSize, 0);
 	itemStaticText4->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxNORMAL, false, wxT("Tahoma")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL,
+					wxFONTWEIGHT_NORMAL, false, FONT_NAME_TAHOMA));
 	itemBoxSizer3->Add(itemStaticText4, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5);
 
 	m_keyId = new wxStaticText(itemDialog1, ID_BACKUP_KEY_ID, _("<key_id>"),
 			wxDefaultPosition, wxDefaultSize, wxSTATIC_BORDER);
 	m_keyId->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD,
+					false, FONT_NAME_TAHOMA));
 	itemBoxSizer3->Add(m_keyId, 0, wxGROW | wxALL, 5);
 
 	wxStaticText *itemStaticText6 = new wxStaticText(itemDialog1, wxID_STATIC,
 			_("Name:"), wxDefaultPosition, wxDefaultSize, 0);
 	itemStaticText6->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxNORMAL, false, wxT("Tahoma")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL,
+					wxFONTWEIGHT_NORMAL, false, FONT_NAME_TAHOMA));
 	itemBoxSizer3->Add(itemStaticText6, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5);
 
 	m_keyName = new wxStaticText(itemDialog1, ID_BACKUP_KEY_NAME, _("<name>"),
 			wxDefaultPosition, wxDefaultSize, wxSTATIC_BORDER);
 	m_keyName->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD,
+					false, FONT_NAME_TAHOMA));
 	itemBoxSizer3->Add(m_keyName, 1, wxGROW | wxALL, 5);
 
 	wxBoxSizer *itemBoxSizer8 = new wxBoxSizer(wxHORIZONTAL);
@@ -181,7 +185,7 @@ void wxGnuPGShellBackup::CreateControls() {
 	itemStaticBoxSizer12->Add(m_isPGP2, 0, wxALIGN_LEFT | wxALL, 5);
 
 	wxStaticLine *itemStaticLine15 = new wxStaticLine(itemDialog1,
-			ID_STATICLINE, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL);
+	ID_STATICLINE, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL);
 	itemBoxSizer2->Add(itemStaticLine15, 0, wxGROW | wxALL, 5);
 
 	wxBoxSizer *itemBoxSizer16 = new wxBoxSizer(wxHORIZONTAL);

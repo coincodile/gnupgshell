@@ -25,10 +25,11 @@
 #endif
 
 ////@begin includes
-////@end includes
-
 #include "wxgnupgshellkeygenwizard.h"
 #include "wxgnupgshelladvkeysettings.h"
+#include "app_resources.h"
+////@end includes
+
 
 ////@begin XPM images
 #include "wizard.xpm"
@@ -282,7 +283,7 @@ void wxGnuPGShellWizPageUserType::CreateControls() {
 	wxStaticText *itemStaticText4 = new wxStaticText(itemWizardPageSimple2,
 			wxID_STATIC, _("User Type"), wxDefaultPosition, wxDefaultSize, 0);
 	itemStaticText4->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, FONT_NAME_TAHOMA));
 	itemBoxSizer3->Add(itemStaticText4, 0, wxGROW | wxALL, 5);
 
 	wxBoxSizer *itemBoxSizer5 = new wxBoxSizer(wxHORIZONTAL);
@@ -435,7 +436,7 @@ void wxGnuPGShellWizPageIntro::CreateControls() {
 			wxID_STATIC, _("PGP Key Generation Assistant"), wxDefaultPosition,
 			wxDefaultSize, 0);
 	itemStaticText7->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, FONT_NAME_TAHOMA));
 	itemBoxSizer6->Add(itemStaticText7, 0, wxALIGN_LEFT | wxALL, 5);
 
 	itemBoxSizer6->Add(5, 5, 0, wxALIGN_LEFT | wxALL, 5);
@@ -569,7 +570,7 @@ void wxGnuPGShellWizPageInfo::CreateControls() {
 			wxID_STATIC, _("Name and Email Assignment"), wxDefaultPosition,
 			wxDefaultSize, 0);
 	itemStaticText12->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, FONT_NAME_TAHOMA));
 	itemBoxSizer11->Add(itemStaticText12, 0, wxGROW | wxALL, 5);
 
 	wxBoxSizer *itemBoxSizer13 = new wxBoxSizer(wxHORIZONTAL);
@@ -622,7 +623,7 @@ void wxGnuPGShellWizPageInfo::CreateControls() {
 			wxID_STATIC, _("(Name must be at least 5 characters long)"),
 			wxDefaultPosition, wxDefaultSize, 0);
 	itemStaticText25->SetFont(
-			wxFont(8, wxSWISS, wxITALIC, wxNORMAL, false, wxT("Tahoma")));
+			wxFont(8, wxFONTFAMILY_SWISS, wxFONTSTYLE_ITALIC, wxFONTWEIGHT_NORMAL, false, FONT_NAME_TAHOMA));
 	itemFlexGridSizer20->Add(itemStaticText25, 0,
 			wxALIGN_CENTER_HORIZONTAL | wxALIGN_CENTER_VERTICAL | wxLEFT
 					| wxRIGHT, 0);
@@ -791,7 +792,7 @@ void wxGnuPGShellWizPagePass::CreateControls() {
 			wxID_STATIC, _("Passphrase Assignment"), wxDefaultPosition,
 			wxDefaultSize, 0);
 	itemStaticText37->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, FONT_NAME_TAHOMA));
 	itemBoxSizer36->Add(itemStaticText37, 0, wxALIGN_LEFT | wxALL, 5);
 
 	wxBoxSizer *itemBoxSizer38 = new wxBoxSizer(wxHORIZONTAL);
@@ -977,7 +978,7 @@ void wxGnuPGShellWizPagePassPrpoblem::CreateControls() {
 			wxID_STATIC, _("Passphrase Problem"), wxDefaultPosition,
 			wxDefaultSize, 0);
 	itemStaticText65->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, FONT_NAME_TAHOMA));
 	itemBoxSizer64->Add(itemStaticText65, 0, wxALIGN_LEFT | wxALL, 5);
 
 	wxBoxSizer *itemBoxSizer66 = new wxBoxSizer(wxHORIZONTAL);
@@ -1240,7 +1241,7 @@ void wxGnuPGShellWizPageDone::CreateControls() {
 			wxID_STATIC, _("Congratulations!"), wxDefaultPosition,
 			wxDefaultSize, 0);
 	itemStaticText56->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, FONT_NAME_TAHOMA));
 	itemBoxSizer55->Add(itemStaticText56, 0, wxALIGN_LEFT | wxALL, 5);
 
 	wxBoxSizer *itemBoxSizer57 = new wxBoxSizer(wxHORIZONTAL);
@@ -1504,7 +1505,7 @@ void wxGnuPGShellWizPageDone1::CreateControls() {
 			wxID_STATIC, _("Congratulations!"), wxDefaultPosition,
 			wxDefaultSize, 0);
 	itemStaticText43->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, FONT_NAME_TAHOMA));
 	itemBoxSizer42->Add(itemStaticText43, 0, wxALIGN_LEFT | wxALL, 5);
 
 	wxBoxSizer *itemBoxSizer44 = new wxBoxSizer(wxHORIZONTAL);

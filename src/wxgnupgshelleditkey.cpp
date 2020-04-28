@@ -25,12 +25,12 @@
 #endif
 
 ////@begin includes
-////@end includes
-
 #include "wxgnupgshelleditkey.h"
 #include "wxgnupgshellpasskey.h"
 #include "wxgnupgshellexpiration.h"
 #include "wxgnupgshellapp.h"
+#include "app_resources.h"
+////@end includes
 
 ////@begin XPM images
 #include "wxwin32x32.xpm"
@@ -135,7 +135,8 @@ void wxGnuPGShellEditKey::CreateControls() {
 	m_userName = new wxStaticText(itemDialog1, ID_EDITKEY_USERNAME,
 			_("<user_name>"), wxDefaultPosition, wxSize(300, -1), wxALIGN_LEFT);
 	m_userName->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, wxT("wxNORMAL_FONT")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD,
+					false, FONT_NAME_WXNORMAL_FONT));
 	itemBoxSizer3->Add(m_userName, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5);
 
 	wxBoxSizer *itemBoxSizer6 = new wxBoxSizer(wxHORIZONTAL);
@@ -148,7 +149,8 @@ void wxGnuPGShellEditKey::CreateControls() {
 	m_keyID = new wxStaticText(itemDialog1, ID_EDITKEY_KEYID, _("<key_id>"),
 			wxDefaultPosition, wxDefaultSize, wxALIGN_LEFT);
 	m_keyID->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, wxT("wxNORMAL_FONT")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD,
+					false, FONT_NAME_WXNORMAL_FONT));
 	itemBoxSizer6->Add(m_keyID, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5);
 
 	wxButton *itemButton9 = new wxButton(itemDialog1, ID_EDITKEY_CHPASSKEY,
@@ -168,7 +170,8 @@ void wxGnuPGShellEditKey::CreateControls() {
 			_("<never expires>"), wxDefaultPosition, wxDefaultSize,
 			wxALIGN_RIGHT);
 	m_expiryDate->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, wxT("wxNORMAL_FONT")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD,
+					false, FONT_NAME_WXNORMAL_FONT));
 	itemStaticBoxSizer10->Add(m_expiryDate, 1, wxALIGN_CENTER_VERTICAL | wxALL,
 			5);
 
@@ -178,7 +181,7 @@ void wxGnuPGShellEditKey::CreateControls() {
 			wxALIGN_CENTER_VERTICAL | wxLEFT | wxTOP | wxBOTTOM, 5);
 
 	wxStaticLine *itemStaticLine13 = new wxStaticLine(itemDialog1,
-			ID_STATICLINE1, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL);
+	ID_STATICLINE1, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL);
 	itemBoxSizer2->Add(itemStaticLine13, 0, wxGROW | wxALL, 5);
 
 	wxBoxSizer *itemBoxSizer14 = new wxBoxSizer(wxHORIZONTAL);

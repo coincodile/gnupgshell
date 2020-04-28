@@ -12,6 +12,8 @@
 #include "wxGnuPGKey.h"
 
 wxGnuPGKey::wxGnuPGKey(void) :
+		Length(0),
+		TrustLevel(TRUST_DONT_KNOW),
 		m_hasExpirationDate(false) {
 	TRUST[wxT("o")] = TRUST[wxT("-")] = TRUST[wxT("q")] = TRUST_DONT_KNOW;
 	TRUST[wxT("i")] = TRUST_INVALID_KEY;

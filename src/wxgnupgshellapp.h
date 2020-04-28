@@ -62,9 +62,22 @@ public:
 	void Init();
 
 	/// Initialises the application
-	virtual bool OnInit();
+	bool OnInit();
 	/// Called on exit
-	virtual int OnExit();
+	int OnExit();
+
+//#if wxUSE_EXCEPTIONS
+//    void CallEventHandler(wxEvtHandler *handler,
+//                          wxEventFunctor& functor,
+//                          wxEvent& event) const;
+//    void HandleEvent(wxEvtHandler *handler,
+//                     wxEventFunction func,
+//                     wxEvent& event) const;
+//    void OnUnhandledException();
+//    bool OnExceptionInMainLoop();
+//    bool StoreCurrentException();
+//    void RethrowStoredException();
+//#endif // wxUSE_EXCEPTIONS
 
 	wxString m_defaultKeyServer;
 	wxArrayString m_serverList;

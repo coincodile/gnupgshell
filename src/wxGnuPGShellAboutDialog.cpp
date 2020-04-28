@@ -25,9 +25,9 @@
 #endif
 
 ////@begin includes
-////@end includes
-
 #include "wxGnuPGShellAboutDialog.h"
+#include "app_resources.h"
+////@end includes
 
 ////@begin XPM images
 #include "wxGnuPGShellAboutHeader.xpm"
@@ -126,7 +126,8 @@ void wxGnuPGShellAboutDialog::CreateControls() {
 	wxStaticText *itemStaticText4 = new wxStaticText(itemDialog1, wxID_STATIC,
 			_("GnuPG Shell - v1.0"), wxDefaultPosition, wxDefaultSize, 0);
 	itemStaticText4->SetFont(
-			wxFont(8, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(8, wxFONTFAMILY_TELETYPE, wxFONTSTYLE_NORMAL,
+					wxFONTWEIGHT_BOLD, false, FONT_NAME_TAHOMA));
 	itemBoxSizer2->Add(itemStaticText4, 0, wxALIGN_CENTER_HORIZONTAL | wxALL,
 			5);
 
@@ -156,7 +157,7 @@ void wxGnuPGShellAboutDialog::CreateControls() {
 			wxALIGN_CENTER_HORIZONTAL | wxLEFT | wxRIGHT | wxTOP, 5);
 
 	wxHyperlinkCtrl *itemHyperlinkCtrl9 = new wxHyperlinkCtrl(itemDialog1,
-			ID_HYPERLINKCTRL1, _("gnupg-shell@tech-faq.com"),
+	ID_HYPERLINKCTRL1, _("gnupg-shell@tech-faq.com"),
 			_T("mailto:gnupg-shell@tech-faq.com"), wxDefaultPosition,
 			wxDefaultSize, wxHL_DEFAULT_STYLE);
 	itemBoxSizer2->Add(itemHyperlinkCtrl9, 0, wxALIGN_CENTER_HORIZONTAL | wxALL,

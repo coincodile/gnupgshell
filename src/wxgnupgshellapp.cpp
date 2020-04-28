@@ -25,8 +25,6 @@
 #endif
 
 ////@begin includes
-////@end includes
-
 #include "wxgnupgshellapp.h"
 #include "wxgnupgshellkeygenwizard.h"
 #include "wxgnupgshellkeyringeditor.h"
@@ -34,6 +32,7 @@
 #include <wx/filename.h>
 #include <wx/busyinfo.h>
 #include <wx/dir.h>
+////@end includes
 
 class wxGnuPGWrapper;
 ////@begin XPM images
@@ -195,8 +194,8 @@ void wxGnuPGShellApp::OnClearTimer(wxTimerEvent &event) {
 		return;
 	}
 	for (wxUint32 it = 0; it < GetKeyList().GetCount(); it++) {
-		if ((now - GetKeyList()[it]->m_lastPassAccess).GetMinutes()
-				> m_cacheTime) {
+		int dif = now.GetMinute() - GetKeyList()[it]->m_lastPassAccess.GetMinute();
+		if (dif > m_cacheTime) {
 			GetKeyList()[it]->ClearPassCache();
 		}
 	}
@@ -322,7 +321,7 @@ void wxGnuPGShellApp::ListKeys(wxString param, GpgKeyList &keyList) {
 bool wxGnuPGShellApp::GenerateKey(void) {
 	bool res = false;
 	wxGnuPGShellKeyGenWizard *wizard = new wxGnuPGShellKeyGenWizard(NULL,
-			ID_WXGNUPGSHELLKEYGENWIZARD);
+	ID_WXGNUPGSHELLKEYGENWIZARD);
 	if (wizard) {
 		if (wizard->Run()) {
 			// fill param
@@ -484,7 +483,7 @@ void wxGnuPGShellApp::RecreateGUI(bool show) {
 		topwindow->Destroy();
 	}
 	wxGnuPGShellKeyringEditor *mainWindow = new wxGnuPGShellKeyringEditor( NULL,
-			ID_WXGNUPGSHELLKEYRINGEDITOR);
+	ID_WXGNUPGSHELLKEYRINGEDITOR);
 	SetTopWindow(mainWindow);
 	mainWindow->Show(show);
 }
@@ -685,4 +684,39 @@ void wxGnuPGShellApp::ClearPassCache() {
 		GetKeyList()[it]->ClearPassCache();
 	}
 }
+//
+//#if wxUSE_EXCEPTIONS
+//void wxGnuPGShellApp::CallEventHandler(wxEvtHandler *handler,
+//		wxEventFunctor &functor, wxEvent &event) const {
+//}
+//#endif // wxUSE_EXCEPTIONS
+//
+//#if wxUSE_EXCEPTIONS
+//void wxGnuPGShellApp::HandleEvent(wxEvtHandler *handler, wxEventFunction func,
+//		wxEvent &event) const {
+//}
+//#endif // wxUSE_EXCEPTIONS
+//
+//#if wxUSE_EXCEPTIONS
+//void wxGnuPGShellApp::OnUnhandledException() {
+//}
+//#endif // wxUSE_EXCEPTIONS
+//
+//#if wxUSE_EXCEPTIONS
+//bool wxGnuPGShellApp::OnExceptionInMainLoop() {
+//
+//	return true;
+//}
+//#endif // wxUSE_EXCEPTIONS
+//
+//#if wxUSE_EXCEPTIONS
+//bool wxGnuPGShellApp::StoreCurrentException() {
+//	return true;
+//}
+//#endif // wxUSE_EXCEPTIONS
+//
+//#if wxUSE_EXCEPTIONS
+//void wxGnuPGShellApp::RethrowStoredException() {
+//}
+//#endif // wxUSE_EXCEPTIONS
 

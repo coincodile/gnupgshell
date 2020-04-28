@@ -16,7 +16,8 @@
 
 WX_DEFINE_LIST(GpgKeyList);
 
-wxGnuPGWrapper::wxGnuPGWrapper(wxGnuPGShellApp *parent = NULL) {
+wxGnuPGWrapper::wxGnuPGWrapper(wxGnuPGShellApp *parent = NULL) :
+		m_task(TASK_GEN_KEY) {
 	//m_app = parent;
 	m_gpgProcess = NULL;
 	//TODO: make it work in UNIX!
@@ -26,14 +27,14 @@ wxGnuPGWrapper::wxGnuPGWrapper(wxGnuPGShellApp *parent = NULL) {
 	m_gpgCmd = wxT("gpg");
 #endif //__WXMSW__
 	m_logWindow = NULL;
-	m_successKey[TASK_GEN_KEY] = wxT("KEY_CREATED");
-	m_successKey[TASK_CHANGE_PASS] = wxT("GOOD_PASSPHRASE");
-	m_successKey[TASK_CHANGE_EXPIRATION] = wxT("GOOD_PASSPHRASE");
-	m_successKey[TASK_ENCRYPT_SIGN_DOCUMENT] = wxT("END_ENCRYPTION");
-	m_successKey[TASK_GEN_REVOKE] = wxT("GOOD_PASSPHRASE");
-	m_successKey[TASK_DECRYPT_DOCUMENT] = wxT("DECRYPTION_OKAY");
-	m_successKey[TASK_ENCRYPT_SYM_DOCUMENT] = wxT("END_ENCRYPTION");
-	m_successKey[TASK_SIGN_DOCUMENT] = wxT("SIG_CREATED");
+	m_successKey[TASK_GEN_KEY] = "KEY_CREATED";
+	m_successKey[TASK_CHANGE_PASS] = "GOOD_PASSPHRASE";
+	m_successKey[TASK_CHANGE_EXPIRATION] = "GOOD_PASSPHRASE";
+	m_successKey[TASK_ENCRYPT_SIGN_DOCUMENT] = "END_ENCRYPTION";
+	m_successKey[TASK_GEN_REVOKE] = "GOOD_PASSPHRASE";
+	m_successKey[TASK_DECRYPT_DOCUMENT] = "DECRYPTION_OKAY";
+	m_successKey[TASK_ENCRYPT_SYM_DOCUMENT] = "END_ENCRYPTION";
+	m_successKey[TASK_SIGN_DOCUMENT] = "SIG_CREATED";
 }
 
 wxGnuPGWrapper::~wxGnuPGWrapper(void) {

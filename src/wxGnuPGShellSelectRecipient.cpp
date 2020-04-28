@@ -25,11 +25,11 @@
 #endif
 
 ////@begin includes
-////@end includes
-
 #include "wxGnuPGShellSelectRecipient.h"
 #include "wxgnupgshellapp.h"
 #include "wxGnuPGKeyPair.h"
+#include "app_resources.h"
+////@end includes
 
 ////@begin XPM images
 #include "wxwin32x32.xpm"
@@ -132,13 +132,14 @@ void wxGnuPGShellSelectRecipient::CreateControls() {
 	wxStaticText *itemStaticText3 =
 			new wxStaticText(itemDialog1, wxID_STATIC,
 					_(
-							"\nSelect recepient for asymmetric or passphrase for symmetric encryption\n"),
+							"\nSelect recipient for asymmetric or passphrase for symmetric encryption\n"),
 					wxDefaultPosition, wxSize(-1, 45),
 					wxALIGN_CENTRE | wxST_NO_AUTORESIZE);
 	itemStaticText3->Wrap(300);
 	itemStaticText3->SetBackgroundColour(wxColour(255, 255, 255));
 	itemStaticText3->SetFont(
-			wxFont(9, wxSWISS, wxNORMAL, wxBOLD, false, wxT("Tahoma")));
+			wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD,
+					false, FONT_NAME_TAHOMA));
 	itemBoxSizer2->Add(itemStaticText3, 0, wxGROW, 5);
 
 	wxBoxSizer *itemBoxSizer4 = new wxBoxSizer(wxHORIZONTAL);
@@ -279,11 +280,10 @@ void wxGnuPGShellSelectRecipient::FillKeyList() {
 
 	wxGnuPGKeyPair *key;
 	wxColor cl(wxT("#F0F0F9"));
-	GpgKeyList keyList = wxGetApp().GetKeyList();
-	int count = static_cast<int>(keyList.GetCount());
+	int count = static_cast<int>(wxGetApp().GetKeyList().GetCount());
 
 	for (int i = 0; i < count; i++) {
-		key = keyList[i];
+		key = wxGetApp().GetKeyList()[i];
 		if (key) {
 			m_recKeyList->InsertItem(i, key->m_key.Id);
 			m_recKeyList->SetItem(i, 1, key->m_key.Name);

@@ -258,10 +258,9 @@ void wxGnuPGShellSettings::ListKeys() {
 	wxGnuPGKeyPair *key;
 	wxColor cl(wxT("#F0F0F9"));
 	int count = static_cast<int>(wxGetApp().GetKeyList().GetCount());
-	GpgKeyList keyList = wxGetApp().GetKeyList();
 
 	for (int i = 0; i < count; i++) {
-		key = keyList[i];
+		key = wxGetApp().GetKeyList()[i];
 		if (key) {
 			m_keyListCtrl->InsertItem(i, key->m_key.Id);
 			m_keyListCtrl->SetItem(i, 1, key->m_key.Name);

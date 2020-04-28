@@ -1,5 +1,5 @@
 /* XPM */
-static char *powered_by_wxwidgets_88x31_xpm[] = {
+static char const *powered_by_wxwidgets_88x31_xpm[] = {
 /* width height num_colors chars_per_pixel */
 "    88    31       64            2",
 /* colors */

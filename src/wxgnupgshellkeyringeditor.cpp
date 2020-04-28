@@ -378,7 +378,7 @@ void wxGnuPGShellKeyringEditor::CreateControls() {
 	itemFrame1->SetMenuBar(menuBar);
 
 	wxToolBar *itemToolBar38 = new wxToolBar(itemFrame1,
-			ID_TOOLBAR_KEYRING_EDITOR, wxDefaultPosition, wxDefaultSize,
+	ID_TOOLBAR_KEYRING_EDITOR, wxDefaultPosition, wxDefaultSize,
 			wxTB_FLAT | wxTB_HORIZONTAL | wxTB_NODIVIDER);
 	itemToolBar38->SetToolBitmapSize(wxSize(32, 32));
 	wxBitmap itemtool39Bitmap(
@@ -448,7 +448,8 @@ void wxGnuPGShellKeyringEditor::CreateControls() {
 			wxDefaultPosition, wxDefaultSize,
 			wxTE_MULTILINE | wxTE_READONLY | wxNO_BORDER);
 	m_logText->SetFont(
-			wxFont(8, wxSWISS, wxNORMAL, wxNORMAL, false, wxT("Courier New")));
+			wxFont(8, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL,
+					wxFONTWEIGHT_NORMAL, false, FONT_NAME_COURIER_NEW));
 
 	m_auiNotebook->AddPage(m_logText, _("Log"), false);
 
@@ -495,30 +496,26 @@ void wxGnuPGShellKeyringEditor::CreateControls() {
 void wxGnuPGShellKeyringEditor::FillProperties() {
 	m_keyProperty->SetPropertyReadOnly(
 			m_keyProperty->Append(
-					new wxPGProperty(_("User Name"), wxT("UserName"))));
+					new wxPGProperty(_("User Name"), "UserName")));
+	m_keyProperty->SetPropertyReadOnly(
+			m_keyProperty->Append(new wxPGProperty(_("Key ID"), "KeyID")));
 	m_keyProperty->SetPropertyReadOnly(
 			m_keyProperty->Append(
-					new wxStringProperty(_("Key ID"), wxT("KeyID"))));
+					new wxPGProperty(_("Fingerprint"), wxT("Fingerprint"))));
 	m_keyProperty->SetPropertyReadOnly(
 			m_keyProperty->Append(
-					new wxStringProperty(_("Fingerprint"),
-							wxT("Fingerprint"))));
+					new wxPGProperty(_("Expires at"), "ExpiresAt")));
 	m_keyProperty->SetPropertyReadOnly(
 			m_keyProperty->Append(
-					new wxStringProperty(_("Expires at"), wxT("ExpiresAt"))));
+					new wxPGProperty(_("Owner Trust"), "OwnerTrust")));
 	m_keyProperty->SetPropertyReadOnly(
 			m_keyProperty->Append(
-					new wxStringProperty(_("Owner Trust"), wxT("OwnerTrust"))));
+					new wxPGProperty(_("Key Validity"), wxT("KeyValidity"))));
+	m_keyProperty->SetPropertyReadOnly(
+			m_keyProperty->Append(new wxPGProperty(_("Key Type"), "KeyType")));
 	m_keyProperty->SetPropertyReadOnly(
 			m_keyProperty->Append(
-					new wxStringProperty(_("Key Validity"),
-							wxT("KeyValidity"))));
-	m_keyProperty->SetPropertyReadOnly(
-			m_keyProperty->Append(
-					new wxStringProperty(_("Key Type"), wxT("KeyType"))));
-	m_keyProperty->SetPropertyReadOnly(
-			m_keyProperty->Append(
-					new wxStringProperty(_("Created at"), wxT("CreatedAt"))));
+					new wxPGProperty(_("Created at"), "CreatedAt")));
 }
 
 void wxGnuPGShellKeyringEditor::FillKeyListColumns() {
@@ -681,8 +678,15 @@ void wxGnuPGShellKeyringEditor::OnMenuSelectAllClick(wxCommandEvent &event) {
 
 void wxGnuPGShellKeyringEditor::OnMenuPreferencesClick(wxCommandEvent &event) {
 	wxGnuPGShellSettings *setDlg = new wxGnuPGShellSettings(this);
-
-	if (setDlg->ShowModal() == wxID_OK) {
+	int mode = 0;
+	try {
+		mode = setDlg->ShowModal();
+	} catch (std::exception &e) {
+		std::cout << "MyException caught" << std::endl;
+		std::cout << e.what() << std::endl;
+		return;
+	}
+	if (mode == wxID_OK) {
 		wxGetApp().m_defaultKeyServer = setDlg->m_defServerCombo->GetString(
 				setDlg->m_defServerCombo->GetSelection());
 		wxGetApp().m_defKey = setDlg->m_keyListCtrl->GetItemText(
