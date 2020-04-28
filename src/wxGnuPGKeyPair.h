@@ -20,23 +20,26 @@
 
 class wxGnuPGShellApp;
 
-class wxGnuPGKeyPair
-{
-    wxString   m_pass;
-    wxDateTime m_lastPassAccess;
+class wxGnuPGKeyPair {
+	wxString m_pass;
+	wxDateTime m_lastPassAccess;
 
 public:
-    wxGnuPGKeyPair(bool pub);
-    ~wxGnuPGKeyPair(void);
-    bool       IsPublic(void) const;
-    bool       m_isPublic;
-    wxGnuPGKey m_key;
-    wxGnuPGKey m_subKey;
-    bool       IsPassCacheEmpty() const { return m_pass.IsEmpty(); }
-    void       ClearPassCache() { m_pass.Clear(); }
+	wxGnuPGKeyPair(bool pub);
+	~wxGnuPGKeyPair(void);
+	bool IsPublic(void) const;
+	bool m_isPublic;
+	wxGnuPGKey m_key;
+	wxGnuPGKey m_subKey;
+	bool IsPassCacheEmpty() const {
+		return m_pass.IsEmpty();
+	}
+	void ClearPassCache() {
+		m_pass.Clear();
+	}
 
 protected:
-    friend class wxGnuPGShellApp;
+	friend class wxGnuPGShellApp;
 };
 
 #endif // _WXGNUPGKEYPAIR_H_

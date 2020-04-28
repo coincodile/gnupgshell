@@ -11,17 +11,14 @@
 
 #include "wxGnuPGKeyPair.h"
 
-wxGnuPGKeyPair::wxGnuPGKeyPair(bool pub = true)
-{
-    m_isPublic = pub;
-    m_lastPassAccess = wxDateTime::Now();
+wxGnuPGKeyPair::wxGnuPGKeyPair(bool pub = true) {
+	m_isPublic = pub;
+	m_lastPassAccess = wxDateTime::Now();
 }
 
-wxGnuPGKeyPair::~wxGnuPGKeyPair(void)
-{
+wxGnuPGKeyPair::~wxGnuPGKeyPair(void) {
 }
 
-bool wxGnuPGKeyPair::IsPublic() const
-{
-    return m_isPublic;
+bool wxGnuPGKeyPair::IsPublic() const {
+	return m_isPublic;
 }

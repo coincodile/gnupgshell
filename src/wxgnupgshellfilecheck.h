@@ -47,56 +47,63 @@ class wxNotebook;
 #define SYMBOL_WXGNUPGSHELLFILECHECK_POSITION wxDefaultPosition
 ////@end control identifiers
 
-
 /*!
  * wxGnuPGShellFileCheck class declaration
  */
 
-class wxGnuPGShellFileCheck: public wxDialog
-{    
-    DECLARE_DYNAMIC_CLASS( wxGnuPGShellFileCheck )
-    DECLARE_EVENT_TABLE()
+class wxGnuPGShellFileCheck: public wxDialog {
+	DECLARE_DYNAMIC_CLASS (wxGnuPGShellFileCheck)DECLARE_EVENT_TABLE()
 
 public:
-    /// Constructors
-    wxGnuPGShellFileCheck();
-    wxGnuPGShellFileCheck( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLFILECHECK_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLFILECHECK_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLFILECHECK_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLFILECHECK_SIZE, long style = SYMBOL_WXGNUPGSHELLFILECHECK_STYLE );
+	/// Constructors
+	wxGnuPGShellFileCheck();
+	wxGnuPGShellFileCheck(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLFILECHECK_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLFILECHECK_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLFILECHECK_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLFILECHECK_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLFILECHECK_STYLE);
 
-    /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLFILECHECK_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLFILECHECK_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLFILECHECK_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLFILECHECK_SIZE, long style = SYMBOL_WXGNUPGSHELLFILECHECK_STYLE );
+	/// Creation
+	bool Create(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLFILECHECK_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLFILECHECK_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLFILECHECK_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLFILECHECK_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLFILECHECK_STYLE);
 
-    /// Destructor
-    ~wxGnuPGShellFileCheck();
+	/// Destructor
+	~wxGnuPGShellFileCheck();
 
-    /// Initialises member variables
-    void Init();
+	/// Initialises member variables
+	void Init();
 
-    /// Creates the controls and sizers
-    void CreateControls();
+	/// Creates the controls and sizers
+	void CreateControls();
 
 ////@begin wxGnuPGShellFileCheck event handler declarations
 
-    /// wxEVT_LEFT_UP event handler for ID_FILECHECK_CLOSE
-    void OnLeftUp( wxMouseEvent& event );
+/// wxEVT_LEFT_UP event handler for ID_FILECHECK_CLOSE
+	void OnLeftUp(wxMouseEvent &event);
 
 ////@end wxGnuPGShellFileCheck event handler declarations
 
 ////@begin wxGnuPGShellFileCheck member function declarations
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
+/// Retrieves bitmap resources
+	wxBitmap GetBitmapResource(const wxString &name);
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
+	/// Retrieves icon resources
+	wxIcon GetIconResource(const wxString &name);
 ////@end wxGnuPGShellFileCheck member function declarations
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
+/// Should we show tooltips?
+	static bool ShowToolTips();
 
 ////@begin wxGnuPGShellFileCheck member variables
-    wxNotebook* m_filesTabsCtrl;
+	wxNotebook *m_filesTabsCtrl;
 ////@end wxGnuPGShellFileCheck member variables
 };
 
 #endif
-    // _WXGNUPGSHELLFILECHECK_H_
+// _WXGNUPGSHELLFILECHECK_H_

@@ -30,7 +30,6 @@
 
 ////@begin forward declarations
 ////@end forward declarations
-
 /*!
  * Control identifiers
  */
@@ -50,61 +49,68 @@
 #define SYMBOL_WXGNUPGSHELLEDITKEY_POSITION wxDefaultPosition
 ////@end control identifiers
 
-
 /*!
  * wxGnuPGShellEditKey class declaration
  */
 
-class wxGnuPGShellEditKey: public wxDialog
-{    
-    DECLARE_DYNAMIC_CLASS( wxGnuPGShellEditKey )
-    DECLARE_EVENT_TABLE()
+class wxGnuPGShellEditKey: public wxDialog {
+	DECLARE_DYNAMIC_CLASS (wxGnuPGShellEditKey)DECLARE_EVENT_TABLE()
 
 public:
-    /// Constructors
-    wxGnuPGShellEditKey();
-    wxGnuPGShellEditKey( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLEDITKEY_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLEDITKEY_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLEDITKEY_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLEDITKEY_SIZE, long style = SYMBOL_WXGNUPGSHELLEDITKEY_STYLE );
+	/// Constructors
+	wxGnuPGShellEditKey();
+	wxGnuPGShellEditKey(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLEDITKEY_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLEDITKEY_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLEDITKEY_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLEDITKEY_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLEDITKEY_STYLE);
 
-    /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLEDITKEY_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLEDITKEY_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLEDITKEY_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLEDITKEY_SIZE, long style = SYMBOL_WXGNUPGSHELLEDITKEY_STYLE );
+	/// Creation
+	bool Create(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLEDITKEY_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLEDITKEY_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLEDITKEY_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLEDITKEY_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLEDITKEY_STYLE);
 
-    /// Destructor
-    ~wxGnuPGShellEditKey();
+	/// Destructor
+	~wxGnuPGShellEditKey();
 
-    /// Initialises member variables
-    void Init();
+	/// Initialises member variables
+	void Init();
 
-    /// Creates the controls and sizers
-    void CreateControls();
+	/// Creates the controls and sizers
+	void CreateControls();
 
 ////@begin wxGnuPGShellEditKey event handler declarations
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_EDITKEY_CHPASSKEY
-    void OnEditkeyChpasskeyClick( wxCommandEvent& event );
+/// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_EDITKEY_CHPASSKEY
+	void OnEditkeyChpasskeyClick(wxCommandEvent &event);
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_EDITKEY_CHEXPIRATION
-    void OnEditkeyChexpirationClick( wxCommandEvent& event );
+	/// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_EDITKEY_CHEXPIRATION
+	void OnEditkeyChexpirationClick(wxCommandEvent &event);
 
 ////@end wxGnuPGShellEditKey event handler declarations
 
 ////@begin wxGnuPGShellEditKey member function declarations
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
+/// Retrieves bitmap resources
+	wxBitmap GetBitmapResource(const wxString &name);
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
+	/// Retrieves icon resources
+	wxIcon GetIconResource(const wxString &name);
 ////@end wxGnuPGShellEditKey member function declarations
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
+/// Should we show tooltips?
+	static bool ShowToolTips();
 
 ////@begin wxGnuPGShellEditKey member variables
-    wxStaticText* m_userName;
-    wxStaticText* m_keyID;
-    wxStaticText* m_expiryDate;
+	wxStaticText *m_userName;
+	wxStaticText *m_keyID;
+	wxStaticText *m_expiryDate;
 ////@end wxGnuPGShellEditKey member variables
 };
 
 #endif
-    // _WXGNUPGSHELLEDITKEY_H_
+// _WXGNUPGSHELLEDITKEY_H_

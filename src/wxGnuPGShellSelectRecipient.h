@@ -53,68 +53,75 @@ class wxListView;
 #define SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_POSITION wxDefaultPosition
 ////@end control identifiers
 
-
 /*!
  * wxGnuPGShellSelectRecipient class declaration
  */
 
-class wxGnuPGShellSelectRecipient: public wxDialog
-{    
-    DECLARE_DYNAMIC_CLASS( wxGnuPGShellSelectRecipient )
-    DECLARE_EVENT_TABLE()
+class wxGnuPGShellSelectRecipient: public wxDialog {
+	DECLARE_DYNAMIC_CLASS (wxGnuPGShellSelectRecipient)DECLARE_EVENT_TABLE()
 
 public:
-    /// Constructors
-    wxGnuPGShellSelectRecipient();
-    wxGnuPGShellSelectRecipient( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_SIZE, long style = SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_STYLE );
+	/// Constructors
+	wxGnuPGShellSelectRecipient();
+	wxGnuPGShellSelectRecipient(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_STYLE);
 
-    /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_SIZE, long style = SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_STYLE );
+	/// Creation
+	bool Create(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLSELECTRECIPIENT_STYLE);
 
-    /// Destructor
-    ~wxGnuPGShellSelectRecipient();
+	/// Destructor
+	~wxGnuPGShellSelectRecipient();
 
-    /// Initialises member variables
-    void Init();
+	/// Initialises member variables
+	void Init();
 
-    /// Creates the controls and sizers
-    void CreateControls();
-    void FillKeyList();
+	/// Creates the controls and sizers
+	void CreateControls();
+	void FillKeyList();
 
 ////@begin wxGnuPGShellSelectRecipient event handler declarations
 
-    /// wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_RECEPIENT_ASYNC
-    void OnRECEPIENTASYNCSelected( wxCommandEvent& event );
+/// wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_RECEPIENT_ASYNC
+	void OnRECEPIENTASYNCSelected(wxCommandEvent &event);
 
-    /// wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_RECEPIENT_SYNC
-    void OnRECEPIENTSYNCSelected( wxCommandEvent& event );
+	/// wxEVT_COMMAND_RADIOBUTTON_SELECTED event handler for ID_RECEPIENT_SYNC
+	void OnRECEPIENTSYNCSelected(wxCommandEvent &event);
 
-    /// wxEVT_UPDATE_UI event handler for wxID_OK
-    void OnOkUpdate( wxUpdateUIEvent& event );
+	/// wxEVT_UPDATE_UI event handler for wxID_OK
+	void OnOkUpdate(wxUpdateUIEvent &event);
 
 ////@end wxGnuPGShellSelectRecipient event handler declarations
 
 ////@begin wxGnuPGShellSelectRecipient member function declarations
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
+/// Retrieves bitmap resources
+	wxBitmap GetBitmapResource(const wxString &name);
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
+	/// Retrieves icon resources
+	wxIcon GetIconResource(const wxString &name);
 ////@end wxGnuPGShellSelectRecipient member function declarations
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
+/// Should we show tooltips?
+	static bool ShowToolTips();
 
 ////@begin wxGnuPGShellSelectRecipient member variables
-    wxRadioButton* m_useKey;
-    wxListView* m_recKeyList;
-    wxRadioButton* m_usePass;
-    wxTextCtrl* m_pass;
-    wxTextCtrl* m_repeat;
-    wxCheckBox* m_needArmor;
+	wxRadioButton *m_useKey;
+	wxListView *m_recKeyList;
+	wxRadioButton *m_usePass;
+	wxTextCtrl *m_pass;
+	wxTextCtrl *m_repeat;
+	wxCheckBox *m_needArmor;
 ////@end wxGnuPGShellSelectRecipient member variables
 };
 
 #endif
-    // _WXGNUPGSHELLSELECTRECIPIENT_H_
+// _WXGNUPGSHELLSELECTRECIPIENT_H_

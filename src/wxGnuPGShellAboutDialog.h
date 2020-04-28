@@ -60,27 +60,35 @@ class wxHyperlinkCtrl;
  * wxGnuPGShellAboutDialog class declaration
  */
 
-class wxGnuPGShellAboutDialog: public wxDialog
-{    
-    DECLARE_DYNAMIC_CLASS( wxGnuPGShellAboutDialog )
-    DECLARE_EVENT_TABLE()
+class wxGnuPGShellAboutDialog: public wxDialog {
+	DECLARE_DYNAMIC_CLASS (wxGnuPGShellAboutDialog)DECLARE_EVENT_TABLE()
 
 public:
-    /// Constructors
-    wxGnuPGShellAboutDialog();
-    wxGnuPGShellAboutDialog( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLABOUTDIALOG_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLABOUTDIALOG_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLABOUTDIALOG_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLABOUTDIALOG_SIZE, long style = SYMBOL_WXGNUPGSHELLABOUTDIALOG_STYLE );
+	/// Constructors
+	wxGnuPGShellAboutDialog();
+	wxGnuPGShellAboutDialog(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLABOUTDIALOG_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLABOUTDIALOG_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLABOUTDIALOG_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLABOUTDIALOG_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLABOUTDIALOG_STYLE);
 
-    /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLABOUTDIALOG_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLABOUTDIALOG_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLABOUTDIALOG_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLABOUTDIALOG_SIZE, long style = SYMBOL_WXGNUPGSHELLABOUTDIALOG_STYLE );
+	/// Creation
+	bool Create(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLABOUTDIALOG_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLABOUTDIALOG_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLABOUTDIALOG_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLABOUTDIALOG_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLABOUTDIALOG_STYLE);
 
-    /// Destructor
-    ~wxGnuPGShellAboutDialog();
+	/// Destructor
+	~wxGnuPGShellAboutDialog();
 
-    /// Initialises member variables
-    void Init();
+	/// Initialises member variables
+	void Init();
 
-    /// Creates the controls and sizers
-    void CreateControls();
+	/// Creates the controls and sizers
+	void CreateControls();
 
 ////@begin wxGnuPGShellAboutDialog event handler declarations
 
@@ -88,20 +96,20 @@ public:
 
 ////@begin wxGnuPGShellAboutDialog member function declarations
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
+/// Retrieves bitmap resources
+	wxBitmap GetBitmapResource(const wxString &name);
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
+	/// Retrieves icon resources
+	wxIcon GetIconResource(const wxString &name);
 ////@end wxGnuPGShellAboutDialog member function declarations
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
+/// Should we show tooltips?
+	static bool ShowToolTips();
 
 ////@begin wxGnuPGShellAboutDialog member variables
-    wxHyperlinkCtrl* m_addrLink;
+	wxHyperlinkCtrl *m_addrLink;
 ////@end wxGnuPGShellAboutDialog member variables
 };
 
 #endif
-    // _WXGNUPGSHELLABOUTDIALOG_H_
+// _WXGNUPGSHELLABOUTDIALOG_H_

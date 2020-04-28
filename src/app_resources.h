@@ -19,8 +19,8 @@
 /*!
  * Control identifiers
  */
- #include <wx/wx.h>
- #include <wx/image.h>
+#include <wx/wx.h>
+#include <wx/image.h>
 
 ////@begin control identifiers
 #define ID_POPUP_EDIT 10063
@@ -33,33 +33,33 @@
 #define ID_FILEMANAGER_SIGN 10101
 ////@end control identifiers
 
-class AppResources
-{
+class AppResources {
 public:
-    AppResources() {}
+	AppResources() {
+	}
 
-/*!
- * Resource functions
- */
+	/*!
+	 * Resource functions
+	 */
 
 ////@begin AppResources resource functions
-    /// Menu creation function for ID_POPUP
-    static wxMenu* CreateMenuMenu();
+	/// Menu creation function for ID_POPUP
+	static wxMenu* CreateMenuMenu();
 
-    /// Menu creation function for ID_SETTINGS_MENU
-    static wxMenu* CreateSettingsMenu();
+	/// Menu creation function for ID_SETTINGS_MENU
+	static wxMenu* CreateSettingsMenu();
 
-    /// Menu creation function for ID_FILEMANAGER_MENU
-    static wxMenu* CreateFileManagerMenu();
+	/// Menu creation function for ID_FILEMANAGER_MENU
+	static wxMenu* CreateFileManagerMenu();
 
-    /// Retrieves bitmap resources
-    static wxBitmap GetBitmapResource( const wxString& name );
+	/// Retrieves bitmap resources
+	static wxBitmap GetBitmapResource(const wxString &name);
 
-    /// Retrieves icon resources
-    static wxIcon GetIconResource( const wxString& name );
+	/// Retrieves icon resources
+	static wxIcon GetIconResource(const wxString &name);
 ////@end AppResources resource functions
 
 };
 
 #endif
-    // _APP_RESOURCES_H_
+// _APP_RESOURCES_H_

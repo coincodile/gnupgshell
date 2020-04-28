@@ -30,7 +30,6 @@
 
 ////@begin forward declarations
 ////@end forward declarations
-
 /*!
  * Control identifiers
  */
@@ -51,63 +50,70 @@
 #define SYMBOL_WXGNUPGSHELLBACKUP_POSITION wxDefaultPosition
 ////@end control identifiers
 
-
 /*!
  * wxGnuPGShellBackup class declaration
  */
 
-class wxGnuPGShellBackup: public wxDialog
-{    
-    DECLARE_DYNAMIC_CLASS( wxGnuPGShellBackup )
-    DECLARE_EVENT_TABLE()
+class wxGnuPGShellBackup: public wxDialog {
+	DECLARE_DYNAMIC_CLASS (wxGnuPGShellBackup)DECLARE_EVENT_TABLE()
 
 public:
-    /// Constructors
-    wxGnuPGShellBackup();
-    wxGnuPGShellBackup( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLBACKUP_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLBACKUP_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLBACKUP_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLBACKUP_SIZE, long style = SYMBOL_WXGNUPGSHELLBACKUP_STYLE );
+	/// Constructors
+	wxGnuPGShellBackup();
+	wxGnuPGShellBackup(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLBACKUP_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLBACKUP_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLBACKUP_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLBACKUP_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLBACKUP_STYLE);
 
-    /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLBACKUP_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLBACKUP_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLBACKUP_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLBACKUP_SIZE, long style = SYMBOL_WXGNUPGSHELLBACKUP_STYLE );
+	/// Creation
+	bool Create(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLBACKUP_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLBACKUP_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLBACKUP_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLBACKUP_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLBACKUP_STYLE);
 
-    /// Destructor
-    ~wxGnuPGShellBackup();
+	/// Destructor
+	~wxGnuPGShellBackup();
 
-    /// Initialises member variables
-    void Init();
+	/// Initialises member variables
+	void Init();
 
-    /// Creates the controls and sizers
-    void CreateControls();
+	/// Creates the controls and sizers
+	void CreateControls();
 
-    bool m_importKey;
-    wxArrayString m_paths;
+	bool m_importKey;
+	wxArrayString m_paths;
 
 ////@begin wxGnuPGShellBackup event handler declarations
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BACKUP_BROWSE
-    void OnBackupBrowseClick( wxCommandEvent& event );
+/// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BACKUP_BROWSE
+	void OnBackupBrowseClick(wxCommandEvent &event);
 
 ////@end wxGnuPGShellBackup event handler declarations
 
 ////@begin wxGnuPGShellBackup member function declarations
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
+/// Retrieves bitmap resources
+	wxBitmap GetBitmapResource(const wxString &name);
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
+	/// Retrieves icon resources
+	wxIcon GetIconResource(const wxString &name);
 ////@end wxGnuPGShellBackup member function declarations
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
+/// Should we show tooltips?
+	static bool ShowToolTips();
 
 ////@begin wxGnuPGShellBackup member variables
-    wxStaticText* m_keyId;
-    wxStaticText* m_keyName;
-    wxTextCtrl* m_fileName;
-    wxCheckBox* m_isArmor;
-    wxCheckBox* m_isPGP2;
+	wxStaticText *m_keyId;
+	wxStaticText *m_keyName;
+	wxTextCtrl *m_fileName;
+	wxCheckBox *m_isArmor;
+	wxCheckBox *m_isPGP2;
 ////@end wxGnuPGShellBackup member variables
 };
 
 #endif
-    // _WXGNUPGSHELLBACKUP_H_
+// _WXGNUPGSHELLBACKUP_H_

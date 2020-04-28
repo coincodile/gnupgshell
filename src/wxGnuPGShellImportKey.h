@@ -52,87 +52,94 @@ class wxListView;
 #define SYMBOL_WXGNUPGSHELLIMPORTKEY_POSITION wxDefaultPosition
 ////@end control identifiers
 
-
 /*!
  * wxGnuPGShellImportKey class declaration
  */
 
-class wxGnuPGShellImportKey: public wxDialog
-{    
-    DECLARE_DYNAMIC_CLASS( wxGnuPGShellImportKey )
-    DECLARE_EVENT_TABLE()
+class wxGnuPGShellImportKey: public wxDialog {
+	DECLARE_DYNAMIC_CLASS (wxGnuPGShellImportKey)DECLARE_EVENT_TABLE()
 
 public:
-    /// Constructors
-    wxGnuPGShellImportKey();
-    wxGnuPGShellImportKey( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLIMPORTKEY_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLIMPORTKEY_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLIMPORTKEY_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLIMPORTKEY_SIZE, long style = SYMBOL_WXGNUPGSHELLIMPORTKEY_STYLE );
+	/// Constructors
+	wxGnuPGShellImportKey();
+	wxGnuPGShellImportKey(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLIMPORTKEY_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLIMPORTKEY_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLIMPORTKEY_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLIMPORTKEY_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLIMPORTKEY_STYLE);
 
-    /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLIMPORTKEY_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLIMPORTKEY_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLIMPORTKEY_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLIMPORTKEY_SIZE, long style = SYMBOL_WXGNUPGSHELLIMPORTKEY_STYLE );
+	/// Creation
+	bool Create(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLIMPORTKEY_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLIMPORTKEY_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLIMPORTKEY_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLIMPORTKEY_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLIMPORTKEY_STYLE);
 
-    /// Destructor
-    ~wxGnuPGShellImportKey();
+	/// Destructor
+	~wxGnuPGShellImportKey();
 
-    /// Initialises member variables
-    void Init();
+	/// Initialises member variables
+	void Init();
 
-    /// Creates the controls and sizers
-    void CreateControls();
-    void FillColumns();
+	/// Creates the controls and sizers
+	void CreateControls();
+	void FillColumns();
 
 ////@begin wxGnuPGShellImportKey event handler declarations
 
-    /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_IMPORTKEY_KEY_ID
-    void OnIMPORTKEYKEYIDUpdated( wxCommandEvent& event );
+/// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_IMPORTKEY_KEY_ID
+	void OnIMPORTKEYKEYIDUpdated(wxCommandEvent &event);
 
-    /// wxEVT_LEFT_DOWN event handler for ID_IMPORTKEY_KEY_ID
-    void OnLeftDownImportKey( wxMouseEvent& event );
+	/// wxEVT_LEFT_DOWN event handler for ID_IMPORTKEY_KEY_ID
+	void OnLeftDownImportKey(wxMouseEvent &event);
 
-    /// wxEVT_SET_FOCUS event handler for ID_IMPORTKEY_KEY_ID
-    void OnKeyIdSetFocus( wxFocusEvent& event );
+	/// wxEVT_SET_FOCUS event handler for ID_IMPORTKEY_KEY_ID
+	void OnKeyIdSetFocus(wxFocusEvent &event);
 
-    /// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_IMPORTKEY_KEY_NAME
-    void OnIMPORTKEYKEYNAMEUpdated( wxCommandEvent& event );
+	/// wxEVT_COMMAND_TEXT_UPDATED event handler for ID_IMPORTKEY_KEY_NAME
+	void OnIMPORTKEYKEYNAMEUpdated(wxCommandEvent &event);
 
-    /// wxEVT_LEFT_DOWN event handler for ID_IMPORTKEY_KEY_NAME
-    void OnLeftDownImportName( wxMouseEvent& event );
+	/// wxEVT_LEFT_DOWN event handler for ID_IMPORTKEY_KEY_NAME
+	void OnLeftDownImportName(wxMouseEvent &event);
 
-    /// wxEVT_SET_FOCUS event handler for ID_IMPORTKEY_KEY_NAME
-    void OnKeyNameSetFocus( wxFocusEvent& event );
+	/// wxEVT_SET_FOCUS event handler for ID_IMPORTKEY_KEY_NAME
+	void OnKeyNameSetFocus(wxFocusEvent &event);
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_IMPORTKEY_FIND
-    void OnIMPORTKEYFINDClick( wxCommandEvent& event );
+	/// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_IMPORTKEY_FIND
+	void OnIMPORTKEYFINDClick(wxCommandEvent &event);
 
-    /// wxEVT_UPDATE_UI event handler for ID_IMPORTKEY_FIND
-    void OnIMPORTKEYFINDUpdate( wxUpdateUIEvent& event );
+	/// wxEVT_UPDATE_UI event handler for ID_IMPORTKEY_FIND
+	void OnIMPORTKEYFINDUpdate(wxUpdateUIEvent &event);
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_IMPORTKEY_CLEAR
-    void OnIMPORTKEYCLEARClick( wxCommandEvent& event );
+	/// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_IMPORTKEY_CLEAR
+	void OnIMPORTKEYCLEARClick(wxCommandEvent &event);
 
-    /// wxEVT_UPDATE_UI event handler for wxID_OK
-    void OnOKUpdate( wxUpdateUIEvent& event );
+	/// wxEVT_UPDATE_UI event handler for wxID_OK
+	void OnOKUpdate(wxUpdateUIEvent &event);
 
 ////@end wxGnuPGShellImportKey event handler declarations
 
 ////@begin wxGnuPGShellImportKey member function declarations
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
+/// Retrieves bitmap resources
+	wxBitmap GetBitmapResource(const wxString &name);
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
+	/// Retrieves icon resources
+	wxIcon GetIconResource(const wxString &name);
 ////@end wxGnuPGShellImportKey member function declarations
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
+/// Should we show tooltips?
+	static bool ShowToolTips();
 
 ////@begin wxGnuPGShellImportKey member variables
-    wxChoice* m_importServer;
-    wxTextCtrl* m_keyIdText;
-    wxTextCtrl* m_keyNameText;
-    wxListView* m_resultKeyList;
+	wxChoice *m_importServer;
+	wxTextCtrl *m_keyIdText;
+	wxTextCtrl *m_keyNameText;
+	wxListView *m_resultKeyList;
 ////@end wxGnuPGShellImportKey member variables
 };
 
 #endif
-    // _WXGNUPGSHELLIMPORTKEY_H_
+// _WXGNUPGSHELLIMPORTKEY_H_

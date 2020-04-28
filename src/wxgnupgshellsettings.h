@@ -26,13 +26,11 @@
 #include "wx/statline.h"
 ////@end includes
 
-
 #include "app_resources.h"
 
 /*!
  * Forward declarations
  */
-
 
 ////@begin forward declarations
 class wxListView;
@@ -59,79 +57,86 @@ class wxSpinCtrl;
 #define SYMBOL_WXGNUPGSHELLSETTINGS_POSITION wxDefaultPosition
 ////@end control identifiers
 
-
 /*!
  * wxGnuPGShellSettings class declaration
  */
 
-class wxGnuPGShellSettings: public wxDialog
-{    
-    DECLARE_DYNAMIC_CLASS( wxGnuPGShellSettings )
-    DECLARE_EVENT_TABLE()
-    wxMenu *m_popupMenu;
+class wxGnuPGShellSettings: public wxDialog {
+DECLARE_DYNAMIC_CLASS( wxGnuPGShellSettings )DECLARE_EVENT_TABLE()
+	wxMenu *m_popupMenu;
 
 public:
-    /// Constructors
-    wxGnuPGShellSettings();
-    wxGnuPGShellSettings( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLSETTINGS_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLSETTINGS_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLSETTINGS_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLSETTINGS_SIZE, long style = SYMBOL_WXGNUPGSHELLSETTINGS_STYLE );
+	/// Constructors
+	wxGnuPGShellSettings();
+	wxGnuPGShellSettings(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLSETTINGS_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLSETTINGS_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLSETTINGS_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLSETTINGS_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLSETTINGS_STYLE);
 
-    /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLSETTINGS_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLSETTINGS_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLSETTINGS_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLSETTINGS_SIZE, long style = SYMBOL_WXGNUPGSHELLSETTINGS_STYLE );
+	/// Creation
+	bool Create(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLSETTINGS_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLSETTINGS_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLSETTINGS_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLSETTINGS_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLSETTINGS_STYLE);
 
-    /// Destructor
-    ~wxGnuPGShellSettings();
+	/// Destructor
+	~wxGnuPGShellSettings();
 
-    /// Initialises member variables
-    void Init();
+	/// Initialises member variables
+	void Init();
 
-    /// Creates the controls and sizers
-    void CreateControls();
-    void FillKeyListColumns();
-    void ListKeys();
-    void OnSettingsSetDefaultClick( wxCommandEvent& event );
+	/// Creates the controls and sizers
+	void CreateControls();
+	void FillKeyListColumns();
+	void ListKeys();
+	void OnSettingsSetDefaultClick(wxCommandEvent &event);
 
 ////@begin wxGnuPGShellSettings event handler declarations
 
-    /// wxEVT_COMMAND_LIST_ITEM_SELECTED event handler for ID_SETTINGS_KEYLIST
-    void OnSettingsKeylistSelected( wxListEvent& event );
+/// wxEVT_COMMAND_LIST_ITEM_SELECTED event handler for ID_SETTINGS_KEYLIST
+	void OnSettingsKeylistSelected(wxListEvent &event);
 
-    /// wxEVT_CONTEXT_MENU event handler for ID_SETTINGS_KEYLIST
-    void OnContextMenu( wxContextMenuEvent& event );
+	/// wxEVT_CONTEXT_MENU event handler for ID_SETTINGS_KEYLIST
+	void OnContextMenu(wxContextMenuEvent &event);
 
-    /// wxEVT_COMMAND_CHECKBOX_CLICKED event handler for ID_SETTINGS_USE_CACHE
-    void OnSETTINGSUSECACHEClick( wxCommandEvent& event );
+	/// wxEVT_COMMAND_CHECKBOX_CLICKED event handler for ID_SETTINGS_USE_CACHE
+	void OnSETTINGSUSECACHEClick(wxCommandEvent &event);
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_SETTINGS_BTN_ADD
-    void OnSettingsBtnAddClick( wxCommandEvent& event );
+	/// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_SETTINGS_BTN_ADD
+	void OnSettingsBtnAddClick(wxCommandEvent &event);
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_SETTINGS_BTN_DEL
-    void OnSettingsBtnDelClick( wxCommandEvent& event );
+	/// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_SETTINGS_BTN_DEL
+	void OnSettingsBtnDelClick(wxCommandEvent &event);
 
-    /// wxEVT_UPDATE_UI event handler for ID_SETTINGS_BTN_DEL
-    void OnSettingsBtnDelUpdate( wxUpdateUIEvent& event );
+	/// wxEVT_UPDATE_UI event handler for ID_SETTINGS_BTN_DEL
+	void OnSettingsBtnDelUpdate(wxUpdateUIEvent &event);
 
 ////@end wxGnuPGShellSettings event handler declarations
 
 ////@begin wxGnuPGShellSettings member function declarations
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
+/// Retrieves bitmap resources
+	wxBitmap GetBitmapResource(const wxString &name);
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
+	/// Retrieves icon resources
+	wxIcon GetIconResource(const wxString &name);
 ////@end wxGnuPGShellSettings member function declarations
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
+/// Should we show tooltips?
+	static bool ShowToolTips();
 
 ////@begin wxGnuPGShellSettings member variables
-    wxListView* m_keyListCtrl;
-    wxCheckBox* m_useCache;
-    wxSpinCtrl* m_cacheTime;
-    wxChoice* m_defServerCombo;
+	wxListView *m_keyListCtrl;
+	wxCheckBox *m_useCache;
+	wxSpinCtrl *m_cacheTime;
+	wxChoice *m_defServerCombo;
 ////@end wxGnuPGShellSettings member variables
-    int m_selectedKey;
+	int m_selectedKey;
 };
 
 #endif
-    // _WXGNUPGSHELLSETTINGS_H_
+// _WXGNUPGSHELLSETTINGS_H_

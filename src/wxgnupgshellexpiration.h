@@ -47,57 +47,64 @@ class wxCalendarCtrl;
 #define SYMBOL_WXGNUPGSHELLEXPIRATION_POSITION wxDefaultPosition
 ////@end control identifiers
 
-
 /*!
  * wxGnuPGShellExpiration class declaration
  */
 
-class wxGnuPGShellExpiration: public wxDialog
-{    
-    DECLARE_DYNAMIC_CLASS( wxGnuPGShellExpiration )
-    DECLARE_EVENT_TABLE()
+class wxGnuPGShellExpiration: public wxDialog {
+	DECLARE_DYNAMIC_CLASS (wxGnuPGShellExpiration)DECLARE_EVENT_TABLE()
 
 public:
-    /// Constructors
-    wxGnuPGShellExpiration();
-    wxGnuPGShellExpiration( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLEXPIRATION_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLEXPIRATION_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLEXPIRATION_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLEXPIRATION_SIZE, long style = SYMBOL_WXGNUPGSHELLEXPIRATION_STYLE );
+	/// Constructors
+	wxGnuPGShellExpiration();
+	wxGnuPGShellExpiration(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLEXPIRATION_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLEXPIRATION_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLEXPIRATION_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLEXPIRATION_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLEXPIRATION_STYLE);
 
-    /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLEXPIRATION_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLEXPIRATION_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLEXPIRATION_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLEXPIRATION_SIZE, long style = SYMBOL_WXGNUPGSHELLEXPIRATION_STYLE );
+	/// Creation
+	bool Create(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLEXPIRATION_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLEXPIRATION_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLEXPIRATION_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLEXPIRATION_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLEXPIRATION_STYLE);
 
-    /// Destructor
-    ~wxGnuPGShellExpiration();
+	/// Destructor
+	~wxGnuPGShellExpiration();
 
-    /// Initialises member variables
-    void Init();
+	/// Initialises member variables
+	void Init();
 
-    /// Creates the controls and sizers
-    void CreateControls();
+	/// Creates the controls and sizers
+	void CreateControls();
 
 ////@begin wxGnuPGShellExpiration event handler declarations
 
-    /// wxEVT_COMMAND_RADIOBOX_SELECTED event handler for ID_EXPIRATION_MODE
-    void OnExpirationModeSelected( wxCommandEvent& event );
+/// wxEVT_COMMAND_RADIOBOX_SELECTED event handler for ID_EXPIRATION_MODE
+	void OnExpirationModeSelected(wxCommandEvent &event);
 
 ////@end wxGnuPGShellExpiration event handler declarations
 
 ////@begin wxGnuPGShellExpiration member function declarations
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
+/// Retrieves bitmap resources
+	wxBitmap GetBitmapResource(const wxString &name);
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
+	/// Retrieves icon resources
+	wxIcon GetIconResource(const wxString &name);
 ////@end wxGnuPGShellExpiration member function declarations
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
+/// Should we show tooltips?
+	static bool ShowToolTips();
 
 ////@begin wxGnuPGShellExpiration member variables
-    wxRadioBox* m_expirationMode;
-    wxCalendarCtrl* m_calendarCtrl;
+	wxRadioBox *m_expirationMode;
+	wxCalendarCtrl *m_calendarCtrl;
 ////@end wxGnuPGShellExpiration member variables
 };
 
 #endif
-    // _WXGNUPGSHELLEXPIRATION_H_
+// _WXGNUPGSHELLEXPIRATION_H_

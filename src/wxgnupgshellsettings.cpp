@@ -200,8 +200,8 @@ void wxGnuPGShellSettings::CreateControls() {
 	itemBoxSizer11->Add(itemButton14, 0, wxALIGN_CENTER_VERTICAL | wxALL, 1);
 
 	wxStaticLine *itemStaticLine15 = new wxStaticLine(itemDialog1,
-			ID_SETTINGS_STATICLINE, wxDefaultPosition, wxDefaultSize,
-			wxLI_HORIZONTAL);
+	ID_SETTINGS_STATICLINE, wxDefaultPosition, wxDefaultSize,
+	wxLI_HORIZONTAL);
 	itemBoxSizer2->Add(itemStaticLine15, 0, wxGROW | wxALL, 5);
 
 	wxStdDialogButtonSizer *itemStdDialogButtonSizer16 =

@@ -22,14 +22,12 @@
 
 ////@begin includes
 ////@end includes
-
 /*!
  * Forward declarations
  */
 
 ////@begin forward declarations
 ////@end forward declarations
-
 /*!
  * Control identifiers
  */
@@ -50,35 +48,42 @@
 #define SYMBOL_WXGNUPGSHELLTRUST_POSITION wxDefaultPosition
 ////@end control identifiers
 
-
 /*!
  * wxGnuPGShellTrust class declaration
  */
 
-class wxGnuPGShellTrust: public wxDialog
-{    
-    DECLARE_DYNAMIC_CLASS( wxGnuPGShellTrust )
-    DECLARE_EVENT_TABLE()
+class wxGnuPGShellTrust: public wxDialog {
+	DECLARE_DYNAMIC_CLASS (wxGnuPGShellTrust)DECLARE_EVENT_TABLE()
 
 public:
-    /// Constructors
-    wxGnuPGShellTrust();
-    wxGnuPGShellTrust( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLTRUST_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLTRUST_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLTRUST_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLTRUST_SIZE, long style = SYMBOL_WXGNUPGSHELLTRUST_STYLE );
+	/// Constructors
+	wxGnuPGShellTrust();
+	wxGnuPGShellTrust(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLTRUST_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLTRUST_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLTRUST_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLTRUST_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLTRUST_STYLE);
 
-    /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLTRUST_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLTRUST_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLTRUST_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLTRUST_SIZE, long style = SYMBOL_WXGNUPGSHELLTRUST_STYLE );
+	/// Creation
+	bool Create(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLTRUST_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLTRUST_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLTRUST_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLTRUST_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLTRUST_STYLE);
 
-    /// Destructor
-    ~wxGnuPGShellTrust();
+	/// Destructor
+	~wxGnuPGShellTrust();
 
-    /// Initialises member variables
-    void Init();
+	/// Initialises member variables
+	void Init();
 
-    /// Creates the controls and sizers
-    void CreateControls();
-    int GetTrust(void);
-    void SetTrust();
-    int m_trust;
+	/// Creates the controls and sizers
+	void CreateControls();
+	int GetTrust(void);
+	void SetTrust();
+	int m_trust;
 
 ////@begin wxGnuPGShellTrust event handler declarations
 
@@ -86,26 +91,26 @@ public:
 
 ////@begin wxGnuPGShellTrust member function declarations
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
+/// Retrieves bitmap resources
+	wxBitmap GetBitmapResource(const wxString &name);
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
+	/// Retrieves icon resources
+	wxIcon GetIconResource(const wxString &name);
 ////@end wxGnuPGShellTrust member function declarations
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
+/// Should we show tooltips?
+	static bool ShowToolTips();
 
 ////@begin wxGnuPGShellTrust member variables
-    wxStaticText* m_trustName;
-    wxStaticText* m_trustKeyID;
-    wxRadioButton* m_isTrustUnknown;
-    wxRadioButton* m_isTrustNever;
-    wxRadioButton* m_isTrustMarginal;
-    wxRadioButton* m_isTrustFull;
-    wxRadioButton* m_isTrustUltimate;
+	wxStaticText *m_trustName;
+	wxStaticText *m_trustKeyID;
+	wxRadioButton *m_isTrustUnknown;
+	wxRadioButton *m_isTrustNever;
+	wxRadioButton *m_isTrustMarginal;
+	wxRadioButton *m_isTrustFull;
+	wxRadioButton *m_isTrustUltimate;
 ////@end wxGnuPGShellTrust member variables
 };
 
 #endif
-    // _WXGNUPGSHELLTRUST_H_
+// _WXGNUPGSHELLTRUST_H_

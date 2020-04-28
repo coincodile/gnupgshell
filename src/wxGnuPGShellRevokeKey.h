@@ -30,7 +30,6 @@
 
 ////@begin forward declarations
 ////@end forward declarations
-
 /*!
  * Control identifiers
  */
@@ -51,66 +50,73 @@
 #define SYMBOL_WXGNUPGSHELLREVOKEKEY_POSITION wxDefaultPosition
 ////@end control identifiers
 
-
 /*!
  * wxGnuPGShellRevokeKey class declaration
  */
 
-class wxGnuPGShellRevokeKey: public wxDialog
-{    
-    DECLARE_DYNAMIC_CLASS( wxGnuPGShellRevokeKey )
-    DECLARE_EVENT_TABLE()
+class wxGnuPGShellRevokeKey: public wxDialog {
+	DECLARE_DYNAMIC_CLASS (wxGnuPGShellRevokeKey)DECLARE_EVENT_TABLE()
 
-    bool m_goodPath;
+	bool m_goodPath;
 
 public:
-    /// Constructors
-    wxGnuPGShellRevokeKey();
-    wxGnuPGShellRevokeKey( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLREVOKEKEY_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLREVOKEKEY_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLREVOKEKEY_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLREVOKEKEY_SIZE, long style = SYMBOL_WXGNUPGSHELLREVOKEKEY_STYLE );
+	/// Constructors
+	wxGnuPGShellRevokeKey();
+	wxGnuPGShellRevokeKey(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLREVOKEKEY_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLREVOKEKEY_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLREVOKEKEY_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLREVOKEKEY_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLREVOKEKEY_STYLE);
 
-    /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLREVOKEKEY_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLREVOKEKEY_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLREVOKEKEY_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLREVOKEKEY_SIZE, long style = SYMBOL_WXGNUPGSHELLREVOKEKEY_STYLE );
+	/// Creation
+	bool Create(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLREVOKEKEY_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLREVOKEKEY_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLREVOKEKEY_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLREVOKEKEY_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLREVOKEKEY_STYLE);
 
-    /// Destructor
-    ~wxGnuPGShellRevokeKey();
+	/// Destructor
+	~wxGnuPGShellRevokeKey();
 
-    /// Initialises member variables
-    void Init();
+	/// Initialises member variables
+	void Init();
 
-    /// Creates the controls and sizers
-    void CreateControls();
+	/// Creates the controls and sizers
+	void CreateControls();
 
 ////@begin wxGnuPGShellRevokeKey event handler declarations
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON
-    void OnBUTTONClick( wxCommandEvent& event );
+/// wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_BUTTON
+	void OnBUTTONClick(wxCommandEvent &event);
 
-    /// wxEVT_UPDATE_UI event handler for wxID_OK
-    void OnOKUpdate( wxUpdateUIEvent& event );
+	/// wxEVT_UPDATE_UI event handler for wxID_OK
+	void OnOKUpdate(wxUpdateUIEvent &event);
 
 ////@end wxGnuPGShellRevokeKey event handler declarations
 
 ////@begin wxGnuPGShellRevokeKey member function declarations
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
+/// Retrieves bitmap resources
+	wxBitmap GetBitmapResource(const wxString &name);
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
+	/// Retrieves icon resources
+	wxIcon GetIconResource(const wxString &name);
 ////@end wxGnuPGShellRevokeKey member function declarations
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
+/// Should we show tooltips?
+	static bool ShowToolTips();
 
 ////@begin wxGnuPGShellRevokeKey member variables
-    wxTextCtrl* m_ids;
-    wxTextCtrl* m_names;
-    wxTextCtrl* m_outputFile;
-    wxRadioBox* m_reasonRadio;
-    wxTextCtrl* m_ownReason;
-    wxTextCtrl* m_passphrase;
+	wxTextCtrl *m_ids;
+	wxTextCtrl *m_names;
+	wxTextCtrl *m_outputFile;
+	wxRadioBox *m_reasonRadio;
+	wxTextCtrl *m_ownReason;
+	wxTextCtrl *m_passphrase;
 ////@end wxGnuPGShellRevokeKey member variables
 };
 
 #endif
-    // _WXGNUPGSHELLREVOKEKEY_H_
+// _WXGNUPGSHELLREVOKEKEY_H_

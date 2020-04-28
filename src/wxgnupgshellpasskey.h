@@ -30,7 +30,6 @@
 
 ////@begin forward declarations
 ////@end forward declarations
-
 /*!
  * Control identifiers
  */
@@ -50,63 +49,70 @@
 #define SYMBOL_WXGNUPGSHELLPASSKEY_POSITION wxDefaultPosition
 ////@end control identifiers
 
-
 /*!
  * wxGnuPGShellPassKey class declaration
  */
 
-class wxGnuPGShellPassKey: public wxDialog
-{    
-    DECLARE_DYNAMIC_CLASS( wxGnuPGShellPassKey )
-    DECLARE_EVENT_TABLE()
+class wxGnuPGShellPassKey: public wxDialog {
+	DECLARE_DYNAMIC_CLASS (wxGnuPGShellPassKey)DECLARE_EVENT_TABLE()
 
 public:
-    /// Constructors
-    wxGnuPGShellPassKey();
-    wxGnuPGShellPassKey( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLPASSKEY_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLPASSKEY_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLPASSKEY_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLPASSKEY_SIZE, long style = SYMBOL_WXGNUPGSHELLPASSKEY_STYLE );
+	/// Constructors
+	wxGnuPGShellPassKey();
+	wxGnuPGShellPassKey(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLPASSKEY_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLPASSKEY_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLPASSKEY_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLPASSKEY_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLPASSKEY_STYLE);
 
-    /// Creation
-    bool Create( wxWindow* parent, wxWindowID id = SYMBOL_WXGNUPGSHELLPASSKEY_IDNAME, const wxString& caption = SYMBOL_WXGNUPGSHELLPASSKEY_TITLE, const wxPoint& pos = SYMBOL_WXGNUPGSHELLPASSKEY_POSITION, const wxSize& size = SYMBOL_WXGNUPGSHELLPASSKEY_SIZE, long style = SYMBOL_WXGNUPGSHELLPASSKEY_STYLE );
+	/// Creation
+	bool Create(wxWindow *parent, wxWindowID id =
+			SYMBOL_WXGNUPGSHELLPASSKEY_IDNAME, const wxString &caption =
+			SYMBOL_WXGNUPGSHELLPASSKEY_TITLE, const wxPoint &pos =
+			SYMBOL_WXGNUPGSHELLPASSKEY_POSITION, const wxSize &size =
+			SYMBOL_WXGNUPGSHELLPASSKEY_SIZE, long style =
+			SYMBOL_WXGNUPGSHELLPASSKEY_STYLE);
 
-    /// Destructor
-    ~wxGnuPGShellPassKey();
+	/// Destructor
+	~wxGnuPGShellPassKey();
 
-    /// Initialises member variables
-    void Init();
+	/// Initialises member variables
+	void Init();
 
-    /// Creates the controls and sizers
-    void CreateControls();
+	/// Creates the controls and sizers
+	void CreateControls();
 
 ////@begin wxGnuPGShellPassKey event handler declarations
 
-    /// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
-    void OnOkClick( wxCommandEvent& event );
+/// wxEVT_COMMAND_BUTTON_CLICKED event handler for wxID_OK
+	void OnOkClick(wxCommandEvent &event);
 
-    /// wxEVT_UPDATE_UI event handler for wxID_OK
-    void OnOkUpdate( wxUpdateUIEvent& event );
+	/// wxEVT_UPDATE_UI event handler for wxID_OK
+	void OnOkUpdate(wxUpdateUIEvent &event);
 
 ////@end wxGnuPGShellPassKey event handler declarations
 
 ////@begin wxGnuPGShellPassKey member function declarations
 
-    /// Retrieves bitmap resources
-    wxBitmap GetBitmapResource( const wxString& name );
+/// Retrieves bitmap resources
+	wxBitmap GetBitmapResource(const wxString &name);
 
-    /// Retrieves icon resources
-    wxIcon GetIconResource( const wxString& name );
+	/// Retrieves icon resources
+	wxIcon GetIconResource(const wxString &name);
 ////@end wxGnuPGShellPassKey member function declarations
 
-    /// Should we show tooltips?
-    static bool ShowToolTips();
+/// Should we show tooltips?
+	static bool ShowToolTips();
 
 ////@begin wxGnuPGShellPassKey member variables
-    wxStaticText* m_userName;
-    wxStaticText* m_keyID;
-    wxTextCtrl* m_currPass;
-    wxTextCtrl* m_passKey;
-    wxTextCtrl* m_passConfirm;
+	wxStaticText *m_userName;
+	wxStaticText *m_keyID;
+	wxTextCtrl *m_currPass;
+	wxTextCtrl *m_passKey;
+	wxTextCtrl *m_passConfirm;
 ////@end wxGnuPGShellPassKey member variables
 };
 
 #endif
-    // _WXGNUPGSHELLPASSKEY_H_
+// _WXGNUPGSHELLPASSKEY_H_

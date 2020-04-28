@@ -36,22 +36,22 @@ wxString wxGnuPGKeyListCtrl::OnGetItemText(long item, long column) const {
 	wxGnuPGKeyPair *key = wxGetApp().GetKeyList()[item];
 //	if (node) {
 //		wxGnuPGKeyPair *key = node->GetData();
-		if (key) {
-			switch (column) {
-			case 0: // key id
-				return key->m_key.Name;
-			case 1:
-				return key->m_key.Id;
-			case 2:
-				return key->m_key.Algorithm;
-			case 3:
-				return key->m_key.GetTrustString();
-			case 4:
-				return key->m_key.GetExpireDateString();
-			default:
-				break;
-			}
+	if (key) {
+		switch (column) {
+		case 0: // key id
+			return key->m_key.Name;
+		case 1:
+			return key->m_key.Id;
+		case 2:
+			return key->m_key.Algorithm;
+		case 3:
+			return key->m_key.GetTrustString();
+		case 4:
+			return key->m_key.GetExpireDateString();
+		default:
+			break;
 		}
+	}
 //	}
 	return wxEmptyString;
 }
