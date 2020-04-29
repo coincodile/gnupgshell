@@ -132,6 +132,7 @@ AC_CONFIG_FILES([
  m4/Makefile
  wxTranslationHelper/Makefile
  src/Makefile
+ tests/Makefile
 ])
 AC_OUTPUT
 
