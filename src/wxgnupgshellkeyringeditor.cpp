@@ -15,6 +15,7 @@
 
 // For compilers that support precompilation, includes "wx/wx.h".
 #include "wx/wxprec.h"
+#include <wx/propgrid/propgrid.h>
 
 #ifdef __BORLANDC__
 #pragma hdrstop
@@ -496,26 +497,29 @@ void wxGnuPGShellKeyringEditor::CreateControls() {
 void wxGnuPGShellKeyringEditor::FillProperties() {
 	m_keyProperty->SetPropertyReadOnly(
 			m_keyProperty->Append(
-					new wxPGProperty(_("User Name"), "UserName")));
+					new wxStringProperty(_("User Name"), "UserName")));
 	m_keyProperty->SetPropertyReadOnly(
-			m_keyProperty->Append(new wxPGProperty(_("Key ID"), "KeyID")));
-	m_keyProperty->SetPropertyReadOnly(
-			m_keyProperty->Append(
-					new wxPGProperty(_("Fingerprint"), wxT("Fingerprint"))));
+			m_keyProperty->Append(new wxStringProperty(_("Key ID"), "KeyID")));
 	m_keyProperty->SetPropertyReadOnly(
 			m_keyProperty->Append(
-					new wxPGProperty(_("Expires at"), "ExpiresAt")));
+					new wxStringProperty(_("Fingerprint"),
+							wxT("Fingerprint"))));
 	m_keyProperty->SetPropertyReadOnly(
 			m_keyProperty->Append(
-					new wxPGProperty(_("Owner Trust"), "OwnerTrust")));
+					new wxStringProperty(_("Expires at"), "ExpiresAt")));
 	m_keyProperty->SetPropertyReadOnly(
 			m_keyProperty->Append(
-					new wxPGProperty(_("Key Validity"), wxT("KeyValidity"))));
-	m_keyProperty->SetPropertyReadOnly(
-			m_keyProperty->Append(new wxPGProperty(_("Key Type"), "KeyType")));
+					new wxStringProperty(_("Owner Trust"), "OwnerTrust")));
 	m_keyProperty->SetPropertyReadOnly(
 			m_keyProperty->Append(
-					new wxPGProperty(_("Created at"), "CreatedAt")));
+					new wxStringProperty(_("Key Validity"),
+							wxT("KeyValidity"))));
+	m_keyProperty->SetPropertyReadOnly(
+			m_keyProperty->Append(
+					new wxStringProperty(_("Key Type"), "KeyType")));
+	m_keyProperty->SetPropertyReadOnly(
+			m_keyProperty->Append(
+					new wxStringProperty(_("Created at"), "CreatedAt")));
 }
 
 void wxGnuPGShellKeyringEditor::FillKeyListColumns() {
