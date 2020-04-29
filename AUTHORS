@@ -1,14 +1,20 @@
 Program: GnuPG Shell
-Maintainer: Will Spencer <will.spencer@tech-faq.com>
+Maintainer: Mostafa Barmshory <mostafa.barmshory@gmail.com>
 
 
 Authors
 =======
 Volodymir (T-Rex) Tryapichko <http://wxwidgets.info>
-        Designed GnuPG Shell.
+	Designed GnuPG Shell.
 
 Andrew (cod) Bulavinov <mail4cod@gmail.com>
-        Implemented GnuPG Shell.
+	Implemented GnuPG Shell.
 
 Will Spencer <will.spencer@tech-faq.com>
 	Info and support.
+
+Mostafa Barmshory <mostafa.barmshory@gmail.com>
+	Developer
+
+Mohammad Hadi Mansouri <mohammad.hadi.mansouri@gmail.com>
+	Developer

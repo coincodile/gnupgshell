@@ -1,19 +1,7 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        wxGnuPGShellImportKey.cpp
-// Purpose:     
-// Author:      cod
-// Modified by: 
-// Created:     12/09/2007 10:34:47
-// RCS-ID:      
-// Copyright:   
-// Licence:     
-/////////////////////////////////////////////////////////////////////////////
-
 #if defined(__GNUG__) && !defined(NO_GCC_PRAGMA)
 #pragma implementation "wxGnuPGShellImportKey.h"
 #endif
 
-// For compilers that support precompilation, includes "wx/wx.h".
 #include "wx/wxprec.h"
 
 #ifdef __BORLANDC__
@@ -24,48 +12,19 @@
 #include "wx/wx.h"
 #endif
 
-////@begin includes
-////@end includes
-
 #include "wxGnuPGShellImportKey.h"
 #include "wxGnuPGWrapper.h"
 #include "wxgnupgshellapp.h"
 #include <wx/busyinfo.h>
 
-////@begin XPM images
-////@end XPM images
-
-/*!
- * wxGnuPGShellImportKey type definition
- */
-
 IMPLEMENT_DYNAMIC_CLASS(wxGnuPGShellImportKey, wxDialog)
-
-/*!
- * wxGnuPGShellImportKey event table definition
- */
-
-BEGIN_EVENT_TABLE( wxGnuPGShellImportKey, wxDialog )
-
-////@begin wxGnuPGShellImportKey event table entries
-EVT_TEXT( ID_IMPORTKEY_KEY_ID, wxGnuPGShellImportKey::OnIMPORTKEYKEYIDUpdated )
-
+BEGIN_EVENT_TABLE( wxGnuPGShellImportKey, wxDialog ) EVT_TEXT( ID_IMPORTKEY_KEY_ID, wxGnuPGShellImportKey::OnIMPORTKEYKEYIDUpdated )
 EVT_TEXT( ID_IMPORTKEY_KEY_NAME, wxGnuPGShellImportKey::OnIMPORTKEYKEYNAMEUpdated )
-
 EVT_BUTTON( ID_IMPORTKEY_FIND, wxGnuPGShellImportKey::OnIMPORTKEYFINDClick )
 EVT_UPDATE_UI( ID_IMPORTKEY_FIND, wxGnuPGShellImportKey::OnIMPORTKEYFINDUpdate )
-
 EVT_BUTTON( ID_IMPORTKEY_CLEAR, wxGnuPGShellImportKey::OnIMPORTKEYCLEARClick )
-
 EVT_UPDATE_UI( wxID_OK, wxGnuPGShellImportKey::OnOKUpdate )
-
-////@end wxGnuPGShellImportKey event table entries
-
 END_EVENT_TABLE()
-
-/*!
- * wxGnuPGShellImportKey constructors
- */
 
 wxGnuPGShellImportKey::wxGnuPGShellImportKey() {
 	Init();
@@ -78,14 +37,9 @@ wxGnuPGShellImportKey::wxGnuPGShellImportKey(wxWindow *parent, wxWindowID id,
 	Create(parent, id, caption, pos, size, style);
 }
 
-/*!
- * wxGnuPGShellImportKey creator
- */
-
 bool wxGnuPGShellImportKey::Create(wxWindow *parent, wxWindowID id,
 		const wxString &caption, const wxPoint &pos, const wxSize &size,
 		long style) {
-////@begin wxGnuPGShellImportKey creation
 	SetExtraStyle(wxWS_EX_BLOCK_EVENTS);
 	wxDialog::Create(parent, id, caption, pos, size, style);
 
@@ -94,38 +48,20 @@ bool wxGnuPGShellImportKey::Create(wxWindow *parent, wxWindowID id,
 		GetSizer()->SetSizeHints(this);
 	}
 	Centre();
-////@end wxGnuPGShellImportKey creation
 	return true;
 }
 
-/*!
- * wxGnuPGShellImportKey destructor
- */
-
 wxGnuPGShellImportKey::~wxGnuPGShellImportKey() {
-////@begin wxGnuPGShellImportKey destruction
-////@end wxGnuPGShellImportKey destruction
 }
 
-/*!
- * Member initialisation
- */
-
 void wxGnuPGShellImportKey::Init() {
-////@begin wxGnuPGShellImportKey member initialisation
 	m_importServer = NULL;
 	m_keyIdText = NULL;
 	m_keyNameText = NULL;
 	m_resultKeyList = NULL;
-////@end wxGnuPGShellImportKey member initialisation
 }
 
-/*!
- * Control creation for wxGnuPGShellImportKey
- */
-
 void wxGnuPGShellImportKey::CreateControls() {
-////@begin wxGnuPGShellImportKey content construction
 	wxGnuPGShellImportKey *itemDialog1 = this;
 
 	wxBoxSizer *itemBoxSizer2 = new wxBoxSizer(wxVERTICAL);
@@ -233,7 +169,6 @@ void wxGnuPGShellImportKey::CreateControls() {
 	m_keyNameText->Connect(ID_IMPORTKEY_KEY_NAME, wxEVT_SET_FOCUS,
 			wxFocusEventHandler(wxGnuPGShellImportKey::OnKeyNameSetFocus), NULL,
 			this);
-////@end wxGnuPGShellImportKey content construction
 	FillColumns();
 
 	m_importServer->Clear();
@@ -242,49 +177,25 @@ void wxGnuPGShellImportKey::CreateControls() {
 	m_importServer->SetStringSelection(wxGetApp().m_defaultKeyServer);
 }
 
-/*!
- * Should we show tooltips?
- */
-
 bool wxGnuPGShellImportKey::ShowToolTips() {
 	return true;
 }
 
-/*!
- * Get bitmap resources
- */
-
 wxBitmap wxGnuPGShellImportKey::GetBitmapResource(const wxString &name) {
 	// Bitmap retrieval
-////@begin wxGnuPGShellImportKey bitmap retrieval
 	wxUnusedVar(name);
 	return wxNullBitmap;
-////@end wxGnuPGShellImportKey bitmap retrieval
 }
-
-/*!
- * Get icon resources
- */
 
 wxIcon wxGnuPGShellImportKey::GetIconResource(const wxString &name) {
 	// Icon retrieval
-////@begin wxGnuPGShellImportKey icon retrieval
 	wxUnusedVar(name);
 	return wxNullIcon;
-////@end wxGnuPGShellImportKey icon retrieval
 }
-
-/*!
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_IMPORTKEY_KEY_ID
- */
 
 void wxGnuPGShellImportKey::OnIMPORTKEYKEYIDUpdated(wxCommandEvent &event) {
 	event.Skip();
 }
-
-/*!
- * wxEVT_COMMAND_TEXT_UPDATED event handler for ID_IMPORTKEY_KEY_NAME
- */
 
 void wxGnuPGShellImportKey::OnIMPORTKEYKEYNAMEUpdated(wxCommandEvent &event) {
 	event.Skip();
@@ -295,17 +206,9 @@ void wxGnuPGShellImportKey::FillColumns() {
 	m_resultKeyList->InsertColumn(1, _("Name"), wxLIST_FORMAT_LEFT, 300);
 }
 
-/*!
- * wxEVT_UPDATE_UI event handler for wxID_OK
- */
-
 void wxGnuPGShellImportKey::OnOKUpdate(wxUpdateUIEvent &event) {
 	event.Enable(m_resultKeyList->GetSelectedItemCount() > 0);
 }
-
-/*!
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_IMPORTKEY_FIND
- */
 
 void wxGnuPGShellImportKey::OnIMPORTKEYFINDClick(wxCommandEvent &event) {
 	wxString key =
@@ -326,53 +229,29 @@ void wxGnuPGShellImportKey::OnIMPORTKEYFINDClick(wxCommandEvent &event) {
 	wxDELETE(info);
 }
 
-/*!
- * wxEVT_UPDATE_UI event handler for ID_IMPORTKEY_FIND
- */
-
 void wxGnuPGShellImportKey::OnIMPORTKEYFINDUpdate(wxUpdateUIEvent &event) {
 	event.Enable(
 			!(m_keyIdText->GetValue() == wxEmptyString
 					&& m_keyNameText->GetValue() == wxEmptyString));
 }
 
-/*!
- * wxEVT_LEFT_DOWN event handler for ID_IMPORTKEY_KEY_ID
- */
-
 void wxGnuPGShellImportKey::OnLeftDownImportKey(wxMouseEvent &event) {
 	//m_keyNameText->SetValue(wxEmptyString);
 	event.Skip();
 }
-
-/*!
- * wxEVT_LEFT_DOWN event handler for ID_IMPORTKEY_KEY_NAME
- */
 
 void wxGnuPGShellImportKey::OnLeftDownImportName(wxMouseEvent &event) {
 	//m_keyIdText->SetValue(wxEmptyString);
 	event.Skip();
 }
 
-/*!
- * wxEVT_SET_FOCUS event handler for ID_IMPORTKEY_KEY_ID
- */
-
 void wxGnuPGShellImportKey::OnKeyIdSetFocus(wxFocusEvent &event) {
 	m_keyNameText->Clear();
 }
 
-/*!
- * wxEVT_SET_FOCUS event handler for ID_IMPORTKEY_KEY_NAME
- */
-
 void wxGnuPGShellImportKey::OnKeyNameSetFocus(wxFocusEvent &event) {
 	m_keyIdText->Clear();
 }
-
-/*!
- * wxEVT_COMMAND_BUTTON_CLICKED event handler for ID_IMPORTKEY_CLEAR
- */
 
 void wxGnuPGShellImportKey::OnIMPORTKEYCLEARClick(wxCommandEvent &event) {
 	m_resultKeyList->DeleteAllItems();

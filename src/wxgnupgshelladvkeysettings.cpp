@@ -212,9 +212,11 @@ void wxGnuPGShellAdvKeySettings::CreateControls() {
 
 	itemStdDialogButtonSizer20->Realize();
 
-////@end wxGnuPGShellAdvKeySettings content construction
-	m_keyType->Append(wxT("RSA"));
-	m_keyType->Append(wxT("DSA"));
+	/*
+	 * List of all supported PK ciphers
+	 */
+	m_keyType->Append("RSA");
+	m_keyType->Append("DSA");
 	m_keyType->Select(0);
 }
 

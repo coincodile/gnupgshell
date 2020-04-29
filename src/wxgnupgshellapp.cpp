@@ -58,35 +58,20 @@ IMPLEMENT_CLASS(wxGnuPGShellApp, wxApp)
 
 BEGIN_EVENT_TABLE( wxGnuPGShellApp, wxApp )
 
-////@begin wxGnuPGShellApp event table entries
-////@end wxGnuPGShellApp event table entries
 EVT_TIMER(wxID_CLEAR_TIMER, wxGnuPGShellApp::OnClearTimer)
 
 END_EVENT_TABLE()
-
-/*!
- * Constructor for wxGnuPGShellApp
- */
 
 wxGnuPGShellApp::wxGnuPGShellApp() :
 		m_gnuPGWrapper(NULL) {
 	Init();
 }
 
-/*!
- * Member initialisation
- */
 
 void wxGnuPGShellApp::Init() {
-////@begin wxGnuPGShellApp member initialisation
-////@end wxGnuPGShellApp member initialisation
-
 	m_gnuPGWrapper = new wxGnuPGWrapper(this);
 }
 
-/*!
- * Initialisation for wxGnuPGShellApp
- */
 
 bool wxGnuPGShellApp::OnInit() {
 #if wxUSE_XPM
@@ -167,10 +152,6 @@ bool wxGnuPGShellApp::OnInit() {
 	return true;
 }
 
-/*!
- * Cleanup for wxGnuPGShellApp
- */
-
 int wxGnuPGShellApp::OnExit() {
 	if (m_timer) {
 		m_timer->Stop();
@@ -182,9 +163,7 @@ int wxGnuPGShellApp::OnExit() {
 	wxDELETE(m_gnuPGWrapper);
 	wxDELETE(m_TranslationHelper);
 
-////@begin wxGnuPGShellApp cleanup
 	return wxApp::OnExit();
-////@end wxGnuPGShellApp cleanup
 }
 
 void wxGnuPGShellApp::OnClearTimer(wxTimerEvent &event) {
@@ -602,8 +581,8 @@ wxGnuPGKey* wxGnuPGShellApp::GetKey(wxUint32 index) {
 bool wxGnuPGShellApp::SearchKeysOnServer(const wxString keyServer,
 		const wxString searchKey, GpgKeyList &keyList) {
 	TaskParams params;
-	params[wxT("keyserver")] = keyServer;
-	params[wxT("key")] = searchKey;
+	params["keyserver"] = keyServer;
+	params["key"] = searchKey;
 	return m_gnuPGWrapper->SearchKeys(params, keyList);
 }
 

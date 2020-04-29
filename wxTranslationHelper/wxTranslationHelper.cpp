@@ -1,14 +1,14 @@
-#include "wxTranslationHelper/wxTranslationHelper.h"
-
 #include <wx/dir.h>
 #include <wx/config.h>
 #include <wx/fileconf.h>
 #include <wx/filename.h>
 
+#include "wxTranslationHelper.h"
+
 wxTranslationHelper::wxTranslationHelper(wxApp &app,
 		const wxString &search_path, bool use_native_config) :
 		m_App(app), m_SearchPath(search_path), m_ConfigPath(wxEmptyString), m_Locale(
-				NULL), m_UseNativeConfig(use_native_config) {
+		NULL), m_UseNativeConfig(use_native_config) {
 	if (search_path.IsEmpty()) {
 		m_SearchPath = wxPathOnly(m_App.argv[0]);
 	}
