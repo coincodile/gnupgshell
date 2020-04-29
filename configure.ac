@@ -5,7 +5,7 @@ min_automake_version="1.14"
 # Initial
 #############################################################################
 # Autoconf
-AC_INIT([gnupgshell], [1.0.1], [mostafa.barmshory@gmail.com])
+AC_INIT([gnupgshell], [1.0.2], [mostafa.barmshory@gmail.com])
 AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_SRCDIR([src/gnupgshell.vers])
 AC_CONFIG_HEADERS([config.h])
