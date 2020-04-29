@@ -774,11 +774,13 @@ void wxGnuPGWrapper::_ParseKeySearchList(const wxArrayString &list,
 			int pos = list.Item(it).Find(wxT(")"));
 			if (pos != wxNOT_FOUND) {
 				pair = NULL;
-				list.Item(it).Remove(0, pos + 2);
-				list.Item(it).Trim();
+
+				wxString item = list[it];
+				item.Remove(0, pos + 2);
+				item.Trim();
 
 				pair = new wxGnuPGKeyPair(true);
-				pair->m_key.Name = list.Item(it);
+				pair->m_key.Name = item;
 				it++;
 			}
 		}
