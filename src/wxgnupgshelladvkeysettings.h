@@ -57,7 +57,17 @@ class wxDatePickerCtrl;
  */
 
 class wxGnuPGShellAdvKeySettings: public wxDialog {
-	DECLARE_DYNAMIC_CLASS (wxGnuPGShellAdvKeySettings)DECLARE_EVENT_TABLE()
+	DECLARE_DYNAMIC_CLASS (wxGnuPGShellAdvKeySettings)
+	DECLARE_EVENT_TABLE()
+public:
+	wxChoice *m_keyType;
+	wxCheckBox *m_generateSeparateFlag;
+	wxTextCtrl *m_keySize;
+	wxRadioButton *m_expireNever;
+	wxDatePickerCtrl *m_expirationDate;
+
+private:
+	wxArrayString supportedKeytype;
 
 public:
 	/// Constructors
@@ -112,13 +122,13 @@ public:
 /// Should we show tooltips?
 	static bool ShowToolTips();
 
-////@begin wxGnuPGShellAdvKeySettings member variables
-	wxChoice *m_keyType;
-	wxCheckBox *m_generateSeparateFlag;
-	wxTextCtrl *m_keySize;
-	wxRadioButton *m_expireNever;
-	wxDatePickerCtrl *m_expirationDate;
-////@end wxGnuPGShellAdvKeySettings member variables
+public:
+	/**
+	 * Get selected key type
+	 *
+	 * @return the string of selected key type
+	 */
+	wxString getKeyType();
 };
 
 #endif

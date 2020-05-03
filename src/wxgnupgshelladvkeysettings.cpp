@@ -1,36 +1,11 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        wxgnupgshelladvkeysettings.cpp
-// Purpose:     
-// Author:      cod
-// Modified by: 
-// Created:     10/08/2007 12:18:44
-// RCS-ID:      
-// Copyright:   
-// Licence:     
-/////////////////////////////////////////////////////////////////////////////
-
 #if defined(__GNUG__) && !defined(NO_GCC_PRAGMA)
 #pragma implementation "wxgnupgshelladvkeysettings.h"
 #endif
 
-// For compilers that support precompilation, includes "wx/wx.h".
-#include "wx/wxprec.h"
 
-#ifdef __BORLANDC__
-#pragma hdrstop
-#endif
-
-#ifndef WX_PRECOMP
-#include "wx/wx.h"
-#endif
-
-////@begin includes
-////@end includes
-
+#include "gnupgshell.h"
 #include "wxgnupgshelladvkeysettings.h"
 
-////@begin XPM images
-////@end XPM images
 
 /*!
  * wxGnuPGShellAdvKeySettings type definition
@@ -104,6 +79,9 @@ wxGnuPGShellAdvKeySettings::~wxGnuPGShellAdvKeySettings() {
  */
 
 void wxGnuPGShellAdvKeySettings::Init() {
+	supportedKeytype.Add("RSA");
+	supportedKeytype.Add("DSA");
+	supportedKeytype.Add("DILITHIUM");
 ////@begin wxGnuPGShellAdvKeySettings member initialisation
 	m_keyType = NULL;
 	m_generateSeparateFlag = NULL;
@@ -144,7 +122,7 @@ void wxGnuPGShellAdvKeySettings::CreateControls() {
 	itemBoxSizer6->Add(m_keyType, 0, wxGROW | wxALL, 5);
 
 	m_generateSeparateFlag = new wxCheckBox(itemDialog1,
-			ID_ADVANCEDKEY_GEN_SEPARATE, _("Generate separate signing subkey"),
+	ID_ADVANCEDKEY_GEN_SEPARATE, _("Generate separate signing subkey"),
 			wxDefaultPosition, wxDefaultSize, 0);
 	m_generateSeparateFlag->SetValue(false);
 	itemBoxSizer6->Add(m_generateSeparateFlag, 0,
@@ -186,14 +164,13 @@ void wxGnuPGShellAdvKeySettings::CreateControls() {
 			wxALIGN_CENTER_VERTICAL | wxRIGHT | wxTOP | wxBOTTOM, 5);
 
 	wxRadioButton *itemRadioButton18 = new wxRadioButton(itemDialog1,
-			ID_ADVANCEDKEY_RADIO_DATE, _T(""), wxDefaultPosition, wxDefaultSize,
-			0);
+	ID_ADVANCEDKEY_RADIO_DATE, _T(""), wxDefaultPosition, wxDefaultSize, 0);
 	itemRadioButton18->SetValue(false);
 	itemBoxSizer14->Add(itemRadioButton18, 0, wxALIGN_CENTER_VERTICAL | wxALL,
 			5);
 
 	m_expirationDate = new wxDatePickerCtrl(itemDialog1,
-			ID_ADVANCEDKEY_EXPIRATION_DATE, wxDateTime(), wxDefaultPosition,
+	ID_ADVANCEDKEY_EXPIRATION_DATE, wxDateTime(), wxDefaultPosition,
 			wxDefaultSize, wxDP_DEFAULT);
 	itemBoxSizer14->Add(m_expirationDate, 0, wxALIGN_CENTER_VERTICAL | wxALL,
 			5);
@@ -215,8 +192,9 @@ void wxGnuPGShellAdvKeySettings::CreateControls() {
 	/*
 	 * List of all supported PK ciphers
 	 */
-	m_keyType->Append("RSA");
-	m_keyType->Append("DSA");
+	for (int i = 0; i < supportedKeytype.GetCount(); i++) {
+		m_keyType->Append(supportedKeytype[i]);
+	}
 	m_keyType->Select(0);
 }
 
@@ -302,5 +280,9 @@ void wxGnuPGShellAdvKeySettings::OnOkClick(wxCommandEvent &event) {
 void wxGnuPGShellAdvKeySettings::OnAdvancedkeyExpirationDateUpdate(
 		wxUpdateUIEvent &event) {
 	event.Enable(!m_expireNever->GetValue());
+}
+
+wxString wxGnuPGShellAdvKeySettings::getKeyType() {
+	return supportedKeytype[m_keyType->GetSelection()];
 }
 

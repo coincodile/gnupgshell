@@ -863,7 +863,7 @@ void wxGnuPGShellWizPageInfo::OnWizpageinfoBtnAdvancedClick(
 			new wxGnuPGShellAdvKeySettings(GetParent());
 	if (advancedKeySettingsDlg->ShowModal() == wxID_OK) {
 		wxDynamicCast(GetParent(), wxGnuPGShellKeyGenWizard)->m_keyType =
-				advancedKeySettingsDlg->m_keyType->GetLabel();
+				advancedKeySettingsDlg->getKeyType();
 		wxDynamicCast(GetParent(), wxGnuPGShellKeyGenWizard)->m_expire =
 				advancedKeySettingsDlg->GetExpirationString();
 		wxDynamicCast(GetParent(), wxGnuPGShellKeyGenWizard)->m_size =

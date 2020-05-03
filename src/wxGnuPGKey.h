@@ -30,7 +30,7 @@ enum TRUST_POLICY {
 };
 
 WX_DECLARE_STRING_HASH_MAP( TRUST_POLICY, KeyTrust );
-WX_DECLARE_HASH_MAP( wxByte, wxString, wxIntegerHash, wxIntegerEqual, KeyAlgorithm );
+WX_DECLARE_HASH_MAP( wxInt32, wxString, wxIntegerHash, wxIntegerEqual, KeyAlgorithm );
 WX_DECLARE_HASH_MAP( TRUST_POLICY, wxString, wxIntegerHash, wxIntegerEqual, TrustString );
 
 // wxGnuPGKey class implements gpg key entity
