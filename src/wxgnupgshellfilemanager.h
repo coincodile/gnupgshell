@@ -46,12 +46,14 @@ class wxListView;
 #define ID_MENU_ADD 10111
 #define ID_MENU_REMOVE 10112
 #define ID_MENU_REMOVE_ALL 10044
+#define ID_MENU_VERIFY_FILE 10057
 #define ID_MENU_SIGN_FILE 10058
 #define ID_MENU_ENCRYPT_FILE 10059
 #define ID_MENU_DECRYPT_FILE 10062
 #define ID_FILE_TOOLBAR 10113
 #define ID_TOOL_OPEN 10115
 #define ID_TOOL_CLEAR 10116
+#define ID_TOOL_VERIFY 10074
 #define ID_TOOL_SIGN 10075
 #define ID_TOOL_ENCRYPT 10076
 #define ID_TOOL_DECRYPT 10077
@@ -125,8 +127,15 @@ public:
 	/// wxEVT_COMMAND_MENU_SELECTED event handler for wxID_EXIT
 	void OnExitClick(wxCommandEvent &event);
 
+	/// wxEVT_COMMAND_MENU_SELECTED event handler for ID_MENU_VERIFY_FILE
+//	void OnMenuVerifyFileClick(wxCommandEvent &event);
+
+	/// wxEVT_UPDATE_UI event handler for ID_MENU_VERIFY_FILE
+	void OnMenuVerifyFileUpdate(wxUpdateUIEvent &event);
+
 	/// wxEVT_COMMAND_MENU_SELECTED event handler for ID_MENU_SIGN_FILE
 	void OnMenuSignFileClick(wxCommandEvent &event);
+	void OnMenuVerifyFileClick(wxCommandEvent &event);
 
 	/// wxEVT_UPDATE_UI event handler for ID_MENU_SIGN_FILE
 	void OnMenuSignFileUpdate(wxUpdateUIEvent &event);
@@ -154,6 +163,7 @@ public:
 
 	/// wxEVT_UPDATE_UI event handler for ID_TOOL_SIGN
 	void OnToolSignUpdate(wxUpdateUIEvent &event);
+	void OnToolVerifyUpdate(wxUpdateUIEvent &event);
 
 	/// wxEVT_UPDATE_UI event handler for ID_TOOL_ENCRYPT
 	void OnToolEncryptUpdate(wxUpdateUIEvent &event);

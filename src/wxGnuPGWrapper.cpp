@@ -11,10 +11,10 @@
 
 #include "wxGnuPGWrapper.h"
 #include <wx/listimpl.cpp>
-#include "wxgnupgshellapp.h"
 #include <wx/txtstrm.h>
+#include "wxgnupgshellapp.h"
 
-WX_DEFINE_LIST(GpgKeyList);
+WX_DEFINE_LIST (GpgKeyList);
 
 wxGnuPGWrapper::wxGnuPGWrapper(wxGnuPGShellApp *parent = NULL) :
 		m_task(TASK_GEN_KEY) {
@@ -102,6 +102,9 @@ bool wxGnuPGWrapper::RunTask(wxGnuPGTask task, TaskParams &params) {
 	case TASK_SIGN_DOCUMENT:
 		return SignDocument(params);
 
+	case TASK_VERIFY_DOCUMENT:
+		return VerifyDocument(params);
+
 	case TASK_CHANGE_PASS:
 		return ChangePass(params);
 
@@ -131,19 +134,27 @@ bool wxGnuPGWrapper::SignKey(TaskParams &params) {
 	return false;
 }
 
-// gpg [--armor] --no-sk-comment --yes --status-fd 1 --no-tty --command-fd 0 --output <out_file> --sign <in_file>
+// gpg [--armor] --allow-non-selfsigned-uid --no-sk-comment --yes --status-fd 1 --no-tty --command-fd 0 --output <out_file> --sign <in_file>
 bool wxGnuPGWrapper::SignDocument(TaskParams &params) {
+	// TODO: add --allow-non-selfsigned-uid into the shell options (or key option)
 	wxString cmdLine =
 			wxString::Format(
-					wxT(
-							"%s --no-sk-comment --yes --status-fd 1 --no-tty --command-fd 0 --output \"%s\" --sign \"%s\""),
+					wxT("%s --pinentry-mode loopback --passphrase %s --allow-non-selfsigned-uid --no-sk-comment --yes --output \"%s\" --sign \"%s\""),
 					params[wxT("armor")].GetData(),
+					params[wxT("passphrase")].GetData(),
 					params[wxT("out")].GetData(),
 					params[wxT("file")].GetData());
 
 	wxArrayString in, out, err;
-	in.Add(params[wxT("passphrase")] + wxT("\n"));
+	return _CallGPGInt(cmdLine, in, out, err);
+}
 
+// gpg [--armor] --verify <out_file>
+bool wxGnuPGWrapper::VerifyDocument(TaskParams &params) {
+	wxString cmdLine = wxString::Format(wxT("%s --verify \"%s\""),
+			params[wxT("armor")].GetData(),
+			params[wxT("out")].GetData());
+	wxArrayString in, out, err;
 	return _CallGPGInt(cmdLine, in, out, err);
 }
 
@@ -151,8 +162,7 @@ bool wxGnuPGWrapper::EncryptDocument(TaskParams &params) {
 	// gpg --armor --batch --always-trust --encrypt --recipient <id> --output <out_file> <in_file>
 	wxString cmdLine =
 			wxString::Format(
-					wxT(
-							"%s --batch --yes --always-trust --encrypt --recipient %s --output \"%s\" \"%s\""),
+					wxT("%s --batch --yes --always-trust --encrypt --recipient %s --output \"%s\" \"%s\""),
 					params[wxT("armor")].GetData(),
 					params[wxT("KeyId")].GetData(),
 					params[wxT("out")].GetData(),
@@ -166,8 +176,7 @@ bool wxGnuPGWrapper::EncryptDocument(TaskParams &params) {
 bool wxGnuPGWrapper::EcryptAndSignDocument(TaskParams &params) {
 	wxString cmdLine =
 			wxString::Format(
-					wxT(
-							"%s --always-trust --yes --encrypt --sign --recipient %s --output \"%s\" \"%s\""),
+					wxT("%s --always-trust --yes --encrypt --sign --recipient %s --output \"%s\" \"%s\""),
 					params[wxT("armor")].GetData(),
 					params[wxT("KeyId")].GetData(),
 					params[wxT("out")].GetData(),
@@ -200,9 +209,9 @@ bool wxGnuPGWrapper::DecryptDocument(TaskParams &params) {
 
 // gpg --no-sk-comment --status-fd 1 --no-tty --command-fd 0 --edit-key <id> passwd
 bool wxGnuPGWrapper::ChangePass(TaskParams &params) {
-	wxString cmdLine =
-			wxT(
-					"--no-sk-comment --status-fd 1 --no-tty --command-fd 0 --edit-key ") + params[wxT("KeyId")] + wxT(" passwd");
+	wxString cmdLine = wxT(
+			"--no-sk-comment --status-fd 1 --no-tty --command-fd 0 --edit-key ")
+			+ params[wxT("KeyId")] + wxT(" passwd");
 	wxArrayString in, out, err;
 
 	in.Add(params[wxT("oldPass")] + wxT("\n"));
@@ -216,7 +225,8 @@ bool wxGnuPGWrapper::ChangePass(TaskParams &params) {
 bool wxGnuPGWrapper::ChangeExpiration(TaskParams &params) {
 	wxString cmdLine =
 			wxT(
-					"--no-sk-comment --logger-fd 1 --status-fd 1 --no-tty --command-fd 0 --edit-key ") + params[wxT("KeyId")] + wxT(" expire");
+					"--no-sk-comment --logger-fd 1 --status-fd 1 --no-tty --command-fd 0 --edit-key ")
+					+ params[wxT("KeyId")] + wxT(" expire");
 	wxArrayString in, out, err;
 
 	in.Add(params[wxT("date")] + wxT("\n"));
@@ -227,7 +237,21 @@ bool wxGnuPGWrapper::ChangeExpiration(TaskParams &params) {
 }
 
 void wxGnuPGWrapper::SetGPGPath(const wxString path) {
-	m_gpgPath = path;
+	if (path.IsEmpty() || path.IsNull()) {
+		m_gpgPath = "";
+	} else {
+		m_gpgPath = path;
+		m_gpgPath.Trim();
+#ifdef __WXMSW__
+    wxString seperator = "\\";
+#else
+		wxString seperator = "\\";
+#endif
+		if (!m_gpgPath.IsEmpty()
+				&& m_gpgPath[m_gpgPath.Len() - 1] != seperator) {
+			m_gpgPath.Append(seperator);
+		}
+	}
 }
 
 wxString wxGnuPGWrapper::GetGPGPath() const {
@@ -265,12 +289,10 @@ bool wxGnuPGWrapper::SetOwnerTrust(TaskParams &params) {
 	wxString cmdLine;
 	cmdLine =
 			wxT(
-					"--no-sk-comment --command-fd 0 --status-fd 1 --no-tty --logger-fd 2 --edit-key ") + params[wxT("KeyID")] + wxT(" trust");
+					"--no-sk-comment --command-fd 0 --status-fd 1 --no-tty --logger-fd 2 --edit-key ")
+					+ params[wxT("KeyID")] + wxT(" trust");
 
 	wxString path = m_gpgPath;
-	if (m_gpgPath[m_gpgPath.Len() - 1] != '/') {
-		path.Append('/');
-	}
 	path.Append(m_gpgCmd);
 	wxString cmd = wxString::Format(wxT("%s %s"), path.GetData(),
 			cmdLine.GetData());
@@ -330,8 +352,8 @@ bool wxGnuPGWrapper::DeleteKeyPair(TaskParams &params) {
 }
 
 bool wxGnuPGWrapper::ImportKey(TaskParams &params) {
-	wxString cmdLine = wxT(
-			"--batch --import \"") + params[wxT("FileName")] + wxT("\"");
+	wxString cmdLine = wxT("--batch --import \"") + params[wxT("FileName")]
+			+ wxT("\"");
 	wxArrayString out, err;
 
 	return _CallGPG(cmdLine, out, err);
@@ -420,6 +442,7 @@ bool wxGnuPGWrapper::KeyGen(TaskParams &params) {
 		in.Add(wxT("Subkey-Type: ELG-E\n"));
 		in.Add(wxT("Subkey-Length: 1024\n"));
 	}
+
 	in.Add(wxT("Passphrase: ") + params[wxT("pass")] + wxT("\n"));
 	in.Add(wxT("Key-Length: ") + params[wxT("length")] + wxT("\n"));
 	in.Add(wxT("Name-Real: ") + params[wxT("name")] + wxT("\n"));
@@ -437,18 +460,8 @@ bool wxGnuPGWrapper::KeyGen(TaskParams &params) {
 // Opens pgp process, redirects its io pipes and return opened streams.
 wxString wxGnuPGWrapper::_OpenGPGProcess(const wxString cmdLine,
 		wxOutputStream *&in, wxInputStream *&out, wxInputStream *&err) {
-	wxString path = m_gpgPath;
-
-#ifdef __WXMSW__
-    if (m_gpgPath[m_gpgPath.Len()-1] != wxT('/')) {
-        path.Append(wxT('/'));
-    }
-    path.Append(m_gpgCmd);
-    wxString cmd = wxString::Format(wxT("%s %s"), path.GetData(), cmdLine.GetData());
-#else
 	wxString cmd = wxString::Format(wxT("%s %s"), m_gpgCmd.GetData(),
 			cmdLine.GetData());
-#endif
 
 	m_gpgProcess = wxProcess::Open(cmd);
 
@@ -743,8 +756,7 @@ void wxGnuPGWrapper::_WriteLog(const wxArrayString log) {
 			logMsg.Append(log[it] + wxT("\n"));
 		}
 	}
-	wxLogMessage
-	(logMsg);
+	wxLogMessage(logMsg);
 }
 
 void wxGnuPGWrapper::_WriteLog(const wxString log) {
@@ -752,8 +764,7 @@ void wxGnuPGWrapper::_WriteLog(const wxString log) {
 	wxString line = log;
 	if (line != wxEmptyString) {
 		line.Replace(pr.GetData(), prpr.GetData(), true);
-		wxLogMessage
-		(line);
+		wxLogMessage(line);
 	}
 }
 

@@ -52,9 +52,11 @@ Makefile
 /config.h
 /.settings/
 
+*.exe
 *.o
 .deps
 .libs
 *.la
 *.lo
 /.autotools
+/config.h.in~

@@ -44,6 +44,7 @@
 #include "secret-16x16x32b.xpm"
 #include "public-16x16x32b.xpm"
 #include "htmbook.xpm"
+#include "verify.xpm"
 ////@end XPM images
 
 /*!
@@ -71,6 +72,8 @@ EVT_MENU( wxID_EXIT, wxGnuPGShellFileManager::OnExitClick )
 
 EVT_MENU( ID_MENU_SIGN_FILE, wxGnuPGShellFileManager::OnMenuSignFileClick )
 EVT_UPDATE_UI( ID_MENU_SIGN_FILE, wxGnuPGShellFileManager::OnMenuSignFileUpdate )
+EVT_MENU( ID_MENU_VERIFY_FILE, wxGnuPGShellFileManager::OnMenuVerifyFileClick )
+EVT_UPDATE_UI( ID_MENU_VERIFY_FILE, wxGnuPGShellFileManager::OnMenuVerifyFileUpdate )
 
 EVT_MENU( ID_MENU_ENCRYPT_FILE, wxGnuPGShellFileManager::OnMenuEncryptFileClick )
 EVT_UPDATE_UI( ID_MENU_ENCRYPT_FILE, wxGnuPGShellFileManager::OnMenuEncryptFileUpdate )
@@ -85,6 +88,8 @@ EVT_UPDATE_UI( ID_TOOL_CLEAR, wxGnuPGShellFileManager::OnToolClearUpdate )
 
 EVT_MENU( ID_TOOL_SIGN, wxGnuPGShellFileManager::OnMenuSignFileClick )
 EVT_UPDATE_UI( ID_TOOL_SIGN, wxGnuPGShellFileManager::OnToolSignUpdate )
+EVT_MENU( ID_TOOL_VERIFY, wxGnuPGShellFileManager::OnMenuVerifyFileClick )
+EVT_UPDATE_UI( ID_TOOL_VERIFY, wxGnuPGShellFileManager::OnToolVerifyUpdate )
 
 EVT_MENU( ID_TOOL_ENCRYPT, wxGnuPGShellFileManager::OnMenuEncryptFileClick )
 EVT_UPDATE_UI( ID_TOOL_ENCRYPT, wxGnuPGShellFileManager::OnToolEncryptUpdate )
@@ -98,6 +103,7 @@ EVT_UPDATE_UI( ID_FILE_STATUSBAR, wxGnuPGShellFileManager::OnFILESTATUSBARUpdate
 EVT_MENU( ID_FILEMANAGER_DECRYPT, wxGnuPGShellFileManager::OnMenuDecryptFileClick )
 EVT_MENU( ID_FILEMANAGER_ENCRYPT, wxGnuPGShellFileManager::OnMenuEncryptFileClick )
 EVT_MENU( ID_FILEMANAGER_SIGN, wxGnuPGShellFileManager::OnMenuSignFileClick )
+EVT_MENU( ID_FILEMANAGER_VERIFY, wxGnuPGShellFileManager::OnMenuVerifyFileClick )
 
 END_EVENT_TABLE()
 
@@ -224,6 +230,13 @@ void wxGnuPGShellFileManager::CreateControls() {
 		itemMenu9->Append(menuItem);
 	}
 	{
+		wxMenuItem *menuItem = new wxMenuItem(itemMenu9, ID_MENU_VERIFY_FILE,
+				_("&Verify Signed File"), _("Verify the Sign Files"), wxITEM_NORMAL);
+		wxBitmap bitmap(itemFrame1->GetBitmapResource(wxT("verify.xpm")));
+		menuItem->SetBitmap(bitmap);
+		itemMenu9->Append(menuItem);
+	}
+	{
 		wxMenuItem *menuItem = new wxMenuItem(itemMenu9, ID_MENU_ENCRYPT_FILE,
 				_("&Encrypt File"), _("Encrypt selected files"), wxITEM_NORMAL);
 		wxBitmap bitmap(
@@ -268,12 +281,23 @@ void wxGnuPGShellFileManager::CreateControls() {
 			itemtool17BitmapDisabled, wxITEM_NORMAL, _("Clear list"),
 			_("Remove all files from list (no from disk!)"));
 	itemToolBar15->AddSeparator();
+
 	wxBitmap itemtool19Bitmap(
 			itemFrame1->GetBitmapResource(wxT("art/sign.ico")));
 	wxBitmap itemtool19BitmapDisabled;
 	itemToolBar15->AddTool(ID_TOOL_SIGN, _T(""), itemtool19Bitmap,
 			itemtool19BitmapDisabled, wxITEM_NORMAL, _("Sign files"),
 			wxEmptyString);
+
+
+	wxBitmap itemtool190Bitmap(
+				itemFrame1->GetBitmapResource(wxT("art/verify.ico")));
+	wxBitmap itemtool190BitmapDisabled;
+	itemToolBar15->AddTool(ID_TOOL_VERIFY, _T(""), itemtool190Bitmap,
+			itemtool190BitmapDisabled, wxITEM_NORMAL, _("Verify files"),
+			wxEmptyString);
+
+
 	wxBitmap itemtool20Bitmap(
 			itemFrame1->GetBitmapResource(wxT("art/secret.ico")));
 	wxBitmap itemtool20BitmapDisabled;
@@ -367,6 +391,9 @@ wxBitmap wxGnuPGShellFileManager::GetBitmapResource(const wxString &name) {
 	} else if (name == _T("sign-16x16x32b.xpm")) {
 		wxBitmap bitmap(sign_16x16x32b_xpm);
 		return bitmap;
+	} else if (name == _T("verify.xpm")) {
+		wxBitmap bitmap(_16f911b1da2455ebda304fb9ac651e852Tf24zZOpiJpypd);
+		return bitmap;
 	} else if (name == _T("secret-16x16x32b.xpm")) {
 		wxBitmap bitmap(secret_16x16x32b_xpm);
 		return bitmap;
@@ -388,6 +415,11 @@ wxBitmap wxGnuPGShellFileManager::GetBitmapResource(const wxString &name) {
 		return bitmap;
 	} else if (name == _T("art/sign.ico")) {
 		wxIcon icon(_T("art/sign.ico"), wxBITMAP_TYPE_ICO);
+		wxBitmap bitmap;
+		bitmap.CopyFromIcon(icon);
+		return bitmap;
+	} else if (name == _T("art/verify.ico")) {
+		wxIcon icon(_T("art/verify.ico"), wxBITMAP_TYPE_ICO);
 		wxBitmap bitmap;
 		bitmap.CopyFromIcon(icon);
 		return bitmap;
@@ -519,11 +551,53 @@ void wxGnuPGShellFileManager::OnMenuSignFileClick(wxCommandEvent &event) {
 	}
 }
 
+
+
+void wxGnuPGShellFileManager::OnMenuVerifyFileClick(wxCommandEvent &event) {
+	wxString fName;
+	wxString newName;
+
+//	wxString pass = wxGetApp().GetPasswordForKey(wxGetApp().m_defKey);
+//	if (pass == wxEmptyString) {
+//		return;
+//	}
+	long index = m_fileList->GetFirstSelected();
+
+	while (index > wxNOT_FOUND) {
+		fName = m_fileList->GetItemText(index);
+		newName = fName + wxT(".asc");
+		if (!wxFileExists(newName)) { // exists
+			wxMessageBox(
+					_("File ") + newName + _(" not exists. There is no sign file?"),
+					_("No sign file"), wxOK);
+			return;
+		}
+		wxBusyInfo *info = new wxBusyInfo(
+				_("Please wait, operation in progress..."), this);
+		if (wxGetApp().VerifyDocument(fName, newName, true)
+				|| wxFileExists(newName)) {
+			wxMessageBox(_("File ") + fName + _(" verified successfully."));
+		} else {
+			wxMessageBox(
+					_(
+							"Verification of file ") + fName + _(" failure due to errors."));
+			wxGetApp().ClearPassCache();
+		}
+
+		wxDELETE(info);
+		index = m_fileList->GetNextSelected(index);
+	}
+}
+
 /*!
  * wxEVT_UPDATE_UI event handler for ID_MENU_SIGN_FILE
  */
 
 void wxGnuPGShellFileManager::OnMenuSignFileUpdate(wxUpdateUIEvent &event) {
+	event.Enable(m_fileList->GetSelectedItemCount() > 0);
+}
+
+void wxGnuPGShellFileManager::OnMenuVerifyFileUpdate(wxUpdateUIEvent &event) {
 	event.Enable(m_fileList->GetSelectedItemCount() > 0);
 }
 
@@ -757,6 +831,10 @@ void wxGnuPGShellFileManager::OnToolClearUpdate(wxUpdateUIEvent &event) {
  */
 
 void wxGnuPGShellFileManager::OnToolSignUpdate(wxUpdateUIEvent &event) {
+	event.Enable(m_fileList->GetFirstSelected() > -1);
+}
+
+void wxGnuPGShellFileManager::OnToolVerifyUpdate(wxUpdateUIEvent &event) {
 	event.Enable(m_fileList->GetFirstSelected() > -1);
 }
 

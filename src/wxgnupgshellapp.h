@@ -1,14 +1,3 @@
-/////////////////////////////////////////////////////////////////////////////
-// Name:        wxgnupgshellapp.h
-// Purpose:
-// Author:      cod
-// Modified by:
-// Created:     03/08/2007 13:51:17
-// RCS-ID:
-// Copyright:
-// Licence:
-/////////////////////////////////////////////////////////////////////////////
-
 #ifndef _WXGNUPGSHELLAPP_H_
 #define _WXGNUPGSHELLAPP_H_
 
@@ -16,38 +5,15 @@
 #pragma interface "wxgnupgshellapp.h"
 #endif
 
-/*!
- * Includes
- */
-
-////@begin includes
-#include "wx/image.h"
-#include "wxgnupgshellkeyringeditor.h"
-////@end includes
-#include "wxGnuPGWrapper.h"
-
+#include <wx/image.h>
 #include <wx/config.h>
-//#include <wx/msw/registry.h>
 #include <wx/dirdlg.h>
 #include <wx/timer.h>
 #include <wx/datetime.h>
+
+#include "wxgnupgshellkeyringeditor.h"
+#include "wxGnuPGWrapper.h"
 #include "wxTranslationHelper/wxTranslationHelper.h"
-
-/*!
- * Forward declarations
- */
-
-////@begin forward declarations
-////@end forward declarations
-/*!
- * Control identifiers
- */
-
-////@begin control identifiers
-////@end control identifiers
-/*!
- * wxGnuPGShellApp class declaration
- */
 
 class wxGnuPGShellApp: public wxApp {
 DECLARE_CLASS( wxGnuPGShellApp )DECLARE_EVENT_TABLE()
@@ -58,26 +24,9 @@ DECLARE_CLASS( wxGnuPGShellApp )DECLARE_EVENT_TABLE()
 public:
 	/// Constructor
 	wxGnuPGShellApp();
-
 	void Init();
-
-	/// Initialises the application
 	bool OnInit();
-	/// Called on exit
 	int OnExit();
-
-//#if wxUSE_EXCEPTIONS
-//    void CallEventHandler(wxEvtHandler *handler,
-//                          wxEventFunctor& functor,
-//                          wxEvent& event) const;
-//    void HandleEvent(wxEvtHandler *handler,
-//                     wxEventFunction func,
-//                     wxEvent& event) const;
-//    void OnUnhandledException();
-//    bool OnExceptionInMainLoop();
-//    bool StoreCurrentException();
-//    void RethrowStoredException();
-//#endif // wxUSE_EXCEPTIONS
 
 	wxString m_defaultKeyServer;
 	wxArrayString m_serverList;
@@ -126,6 +75,8 @@ public:
 			const wxString pass, bool armored);
 	bool SignDocument(const wxString fileName, const wxString outFile,
 			const wxString pass, bool armored);
+	bool VerifyDocument(const wxString fileName, const wxString outFile,
+			bool armored);
 	bool DecryptDocument(const wxString fileName, const wxString outFile,
 			const wxString pass, bool overwrite);
 	bool EncryptAndSignDocument(const wxString fileName, const wxString outFile,
@@ -141,13 +92,6 @@ public:
 
 	// ***** END GnuPG interface *****
 
-	////@begin wxGnuPGShellApp event handler declarations
-
-////@end wxGnuPGShellApp event handler declarations
-
-////@begin wxGnuPGShellApp member function declarations
-
-////@end wxGnuPGShellApp member function declarations
 
 	// Translation
 	bool SelectLanguage();
@@ -171,12 +115,22 @@ public:
 		m_cacheTime = time;
 	}
 
-////@begin wxGnuPGShellApp member variables
-////@end wxGnuPGShellApp member variables
 protected:
 	wxTranslationHelper *m_TranslationHelper;
 	wxGnuPGWrapper *m_gnuPGWrapper;       // Wrapper of gpg facilities
 	bool m_ready;
+
+	/**
+	 * Loading System Configuration
+	 *
+	 * In windows we are looking in RegEdit
+	 *
+	 * HKEY_CURRENT_USER\\Software\\gnupgshell
+	 *
+	 * In Linux we use following file
+	 *
+	 * $hoem/.gnupgshell
+	 */
 	void LoadConfig();
 	void SaveConfig();
 	void SaveServerList(wxConfig &config);
@@ -188,12 +142,9 @@ protected:
 	};
 };
 
-/*!
+/*
  * Application instance declaration
  */
-
-////@begin declare app
 DECLARE_APP(wxGnuPGShellApp)
-////@end declare app
 
 #endif // _WXGNUPGSHELLAPP_H_

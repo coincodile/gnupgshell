@@ -201,12 +201,15 @@ void wxGnuPGShellApp::LoadConfig() {
     }
 
     if (!m_ready) {
-        wxMessageBox(_("GnuPG was not found. Please, reinstall it."));
+        wxMessageBox(_("GnuPG was not found. A CMD PATH value is used to find GnuPG."));
+        m_gnuPGWrapper->SetGPGPath("");
+    	m_ready = true;
     } else {
         m_gnuPGWrapper->SetGPGPath(confLine);
+    	m_ready = true;
     }
 #else
-	m_gnuPGWrapper->SetGPGPath(wxT(""));
+	m_gnuPGWrapper->SetGPGPath("");
 	m_ready = true;
 #endif
 
@@ -383,6 +386,14 @@ bool wxGnuPGShellApp::SignDocument(const wxString fileName,
 	params[wxT("armor")] = armored ? wxT(" --armor ") : wxT(" ");
 
 	return m_gnuPGWrapper->RunTask(TASK_SIGN_DOCUMENT, params);
+}
+bool wxGnuPGShellApp::VerifyDocument(const wxString fileName,
+		const wxString outFile, bool armored) {
+	TaskParams params;
+	params[wxT("file")] = fileName;
+	params[wxT("out")] = outFile;
+
+	return m_gnuPGWrapper->RunTask(TASK_VERIFY_DOCUMENT, params);
 }
 
 // EncryptAndSignDocument

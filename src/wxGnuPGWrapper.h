@@ -40,6 +40,7 @@ enum wxGnuPGTask {
 	TASK_CHANGE_PASS, /**< TASK_CHANGE_PASS */
 	TASK_CHANGE_EXPIRATION, /**< TASK_CHANGE_EXPIRATION */
 	TASK_SIGN_DOCUMENT, /**< TASK_SIGN_DOCUMENT */
+	TASK_VERIFY_DOCUMENT, /**< TASK_SIGN_DOCUMENT */
 	TASK_ENCRYPT_SIGN_DOCUMENT,/**< TASK_ENCRYPT_SIGN_DOCUMENT */
 	TASK_ENCRYPT_DOCUMENT, /**< TASK_ENCRYPT_DOCUMENT */
 	TASK_ENCRYPT_SYM_DOCUMENT, /**< TASK_ENCRYPT_SYM_DOCUMENT */
@@ -158,6 +159,7 @@ protected:
 	bool DecryptDocument(TaskParams &params);
 	bool EcryptAndSignDocument(TaskParams &params);
 	bool SignDocument(TaskParams &params);
+	bool VerifyDocument(TaskParams &params);
 	bool ChangePass(TaskParams &params);
 	bool ChangeExpiration(TaskParams &params);
 	bool GenRevoke(TaskParams &params);

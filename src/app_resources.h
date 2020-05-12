@@ -36,6 +36,7 @@ extern char const *FONT_NAME_WXNORMAL_FONT;
 #define ID_FILEMANAGER_ENCRYPT 10099
 #define ID_FILEMANAGER_DECRYPT 10100
 #define ID_FILEMANAGER_SIGN 10101
+#define ID_FILEMANAGER_VERIFY 10102
 ////@end control identifiers
 
 class AppResources {
