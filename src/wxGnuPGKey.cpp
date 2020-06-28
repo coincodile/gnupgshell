@@ -31,6 +31,7 @@ wxGnuPGKey::wxGnuPGKey(void) :
 	ALGORITHM[17] = _("DSA");
 	ALGORITHM[20] = _("Elgamal");
 	ALGORITHM[101] = _("Dilithium");
+	ALGORITHM[102] = _("Newhope");
 
 	TRUST_STRING[TRUST_DONT_KNOW] = _("Don't know");
 	TRUST_STRING[TRUST_DO_NOT_TRUST] = _("Do not trust");

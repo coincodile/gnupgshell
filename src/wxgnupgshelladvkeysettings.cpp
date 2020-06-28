@@ -82,6 +82,7 @@ void wxGnuPGShellAdvKeySettings::Init() {
 	supportedKeytype.Add("RSA");
 	supportedKeytype.Add("DSA");
 	supportedKeytype.Add("DILITHIUM");
+	supportedKeytype.Add("NEWHOPE");
 ////@begin wxGnuPGShellAdvKeySettings member initialisation
 	m_keyType = NULL;
 	m_generateSeparateFlag = NULL;

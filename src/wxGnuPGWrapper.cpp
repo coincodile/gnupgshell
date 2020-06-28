@@ -433,7 +433,10 @@ bool wxGnuPGWrapper::KeyGen(TaskParams &params) {
 	cmdLine = wxT("--no-secmem-warning --batch --status-fd 1 --gen-key");
 
 	wxArrayString out, err, in;
-	if (params[wxT("cypher")] == wxT("DILITHIUM")) {
+
+	if (params[wxT("cypher")] == wxT("NEWHOPE")) {
+		in.Add(wxT("Key-Type: NEWHOPE\n"));
+	}else if (params[wxT("cypher")] == wxT("DILITHIUM")) {
 		in.Add(wxT("Key-Type: DILITHIUM\n"));
 	} else if (params[wxT("cypher")] == wxT("RSA")) {
 		in.Add(wxT("Key-Type: RSA\n"));
